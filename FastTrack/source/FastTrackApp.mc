@@ -14,11 +14,10 @@ class FastTrackApp extends Application.AppBase {
 
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
-    }
-
-    // Return the initial view of your application here
+    }    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new FastTrackView(), new FastTrackDelegate() ];
+        var view = new FastTrackView();
+        return [ view, new FastTrackDelegate(view) ];
     }
 
 }
