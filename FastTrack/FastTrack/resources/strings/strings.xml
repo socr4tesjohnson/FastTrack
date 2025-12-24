@@ -5,4 +5,28 @@
 
     <string id="menu_label_1">Item 1</string>
     <string id="menu_label_2">Item 2</string>
+
+    <!-- History UI Strings -->
+    <string id="menu_view_history">View History</string>
+    <string id="history_title">Fasting History</string>
+    <string id="history_empty">No fasting history yet. Complete a fast to see it here!</string>
+
+    <!-- Statistics Labels -->
+    <string id="total_hours">Total Hours</string>
+    <string id="success_rate">Success Rate</string>
+    <string id="lifetime_stats">Lifetime</string>
+    <string id="weekly_stats">Weekly</string>
+    <string id="monthly_stats">Monthly</string>
+
+    <!-- Session Details Labels -->
+    <string id="session_date">Date</string>
+    <string id="session_duration">Duration</string>
+    <string id="session_goal">Goal</string>
+    <string id="session_avg_hr">Avg HR</string>
+    <string id="session_avg_stress">Avg Stress</string>
+
+    <!-- Status Values -->
+    <string id="goal_achieved">Achieved</string>
+    <string id="goal_not_achieved">Not Achieved</string>
+    <string id="value_not_available">--</string>
 </strings>

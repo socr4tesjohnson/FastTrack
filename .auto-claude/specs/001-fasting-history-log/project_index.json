@@ -1,0 +1,27 @@
+{
+  "project_root": "C:\\Projects\\FastTrack",
+  "project_type": "single",
+  "services": {
+    "garmin_app": {
+      "path": "./FastTrack/FastTrack",
+      "tech_stack": ["monkeyc", "garmin-connect-iq"],
+      "port": null,
+      "dev_command": "simulator",
+      "test_command": null,
+      "build_command": "MonkeyC: Build for Device"
+    }
+  },
+  "infrastructure": {
+    "docker": false,
+    "database": "local_storage",
+    "cloud_sync": false
+  },
+  "conventions": {
+    "storage_api": "Toybox.Application.Storage",
+    "ui_framework": "Toybox.WatchUi",
+    "view_pattern": "Extend WatchUi.View with onLayout/onShow/onUpdate/onHide",
+    "delegate_pattern": "Extend WatchUi.MenuInputDelegate with onMenuItem",
+    "null_safety": "Always check for null before accessing data",
+    "string_resources": "All UI labels in resources/strings/strings.xml"
+  }
+}

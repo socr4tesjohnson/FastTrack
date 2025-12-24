@@ -1,0 +1,409 @@
+{
+  "feature": "Fasting History Log",
+  "workflow_type": "feature",
+  "workflow_rationale": "Adding new functionality to store and display completed fasting sessions. This is a multi-component feature requiring data model, storage, UI views, and menu integration. Follows feature workflow pattern: storage layer -> data integration -> UI display -> menu wiring.",
+  "phases": [
+    {
+      "id": "phase-1-data-model",
+      "name": "Data Model & Storage",
+      "type": "implementation",
+      "description": "Create FastingHistory.mc class to manage the 30-session circular buffer with FIFO pruning",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-1-1",
+          "description": "Create FastingHistory.mc with storage management",
+          "service": "garmin_app",
+          "files_to_modify": [],
+          "files_to_create": [
+            "source/FastingHistory.mc"
+          ],
+          "patterns_from": [
+            "source/BiometricsTracker.mc"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -E 'class FastingHistory|saveSession|getHistory|getStats' FastTrack/FastTrack/source/FastingHistory.mc",
+            "expected": "Should show class declaration, saveSession, getHistory, and getStats methods"
+          },
+          "implementation_notes": [
+            "Follow storage pattern from BiometricsTracker.mc lines 51-63",
+            "Storage key: 'fastingHistory'",
+            "Max 30 sessions, use array.slice() to prune oldest",
+            "Session structure: {date: Moment, duration: Number, goalAchieved: Boolean, avgHeartRate: Number?, avgStress: Number?, startTime: Moment, endTime: Moment}",
+            "Methods needed: saveSession(sessionData), getHistory(), getStats(period), getTotalHours(period)",
+            "Handle null history gracefully - initialize as []"
+          ],
+          "status": "completed",
+          "notes": "Created FastingHistory.mc with storage management. Implemented: saveSession(), getHistory(), getStats(), getTotalHours() and helper methods. Follows BiometricsTracker.mc pattern for storage array with 30-session limit and FIFO pruning. Also fixed submodule issue by converting to regular directory content.",
+          "updated_at": "2025-12-24T20:19:26.557701+00:00"
+        }
+      ]
+    },
+    {
+      "id": "phase-2-session-integration",
+      "name": "Session Integration",
+      "type": "implementation",
+      "description": "Modify FastingSession.mc to save completed fasting sessions to history",
+      "depends_on": [
+        "phase-1-data-model"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-2-1",
+          "description": "Modify FastingSession.stopFast() to save history",
+          "service": "garmin_app",
+          "files_to_modify": [
+            "source/FastingSession.mc"
+          ],
+          "files_to_create": [],
+          "patterns_from": [
+            "source/FastingHistory.mc"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -A 10 'function stopFast' FastTrack/FastTrack/source/FastingSession.mc | grep -i 'history\\|save'",
+            "expected": "Should show history saving logic in stopFast() method"
+          },
+          "implementation_notes": [
+            "Import FastingHistory class",
+            "In stopFast() method (line 29), after calling getSessionStats()",
+            "Create history manager instance",
+            "Build session data dictionary with: date, duration, goalAchieved, avgHeartRate, avgStress, startTime, endTime",
+            "Call history.saveSession(sessionData)",
+            "Goal achieved logic: compare elapsedTime to some threshold (e.g., user's goal duration)",
+            "Preserve existing stopFast() functionality (don't break existing code)"
+          ],
+          "status": "completed",
+          "notes": "Modified FastingSession.stopFast() to save completed fasting sessions to history. Added FastingHistory instance to the class, creates session data dictionary with date, duration, goalAchieved, avgHeartRate, avgStress, startTime, and endTime. Also fixed a bug where startTime was used after being set to null for duration calculation.",
+          "updated_at": "2025-12-24T20:24:09.453360+00:00"
+        }
+      ]
+    },
+    {
+      "id": "phase-3-ui-views",
+      "name": "History UI Views",
+      "type": "implementation",
+      "description": "Create view and delegate to display fasting history with scrollable list and aggregate stats",
+      "depends_on": [
+        "phase-1-data-model"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-3-1",
+          "description": "Create FastingHistoryView.mc for displaying history",
+          "service": "garmin_app",
+          "files_to_modify": [],
+          "files_to_create": [
+            "source/FastingHistoryView.mc"
+          ],
+          "patterns_from": [
+            "source/FastTrackView.mc"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -E 'class FastingHistoryView|extends.*View|onUpdate|onLayout' FastTrack/FastTrack/source/FastingHistoryView.mc",
+            "expected": "Should show class extending WatchUi.View with lifecycle methods"
+          },
+          "implementation_notes": [
+            "Extend WatchUi.View (pattern from FastTrackView.mc)",
+            "Implement onLayout(), onShow(), onUpdate(), onHide()",
+            "Initialize FastingHistory instance in initialize()",
+            "Store current scroll position/selected index",
+            "Display format: Show one session at a time or list view",
+            "Use Graphics.drawText() to render session details",
+            "Format duration as HH:MM (hours:minutes)",
+            "Show date using Gregorian.info()",
+            "Display 'N/A' or '--' for missing biometrics",
+            "Add aggregate stats at top: Total hours (lifetime/weekly/monthly), Success rate"
+          ],
+          "status": "completed",
+          "notes": "Created FastingHistoryView.mc extending WatchUi.View with: onLayout(), onShow(), onUpdate(), onHide() lifecycle methods. Features include: scrollable history entries (most recent first via getHistoryReversed()), empty state display, session details (date, duration, goal status, avg HR, avg stress), navigation methods (nextEntry/previousEntry) for delegate integration, entry counter, color-coded goal status, and N/A handling for missing biometrics. Follows FastTrackView.mc pattern.",
+          "updated_at": "2025-12-24T20:27:42.531475+00:00"
+        },
+        {
+          "id": "subtask-3-2",
+          "description": "Create FastingHistoryDelegate.mc for input handling",
+          "service": "garmin_app",
+          "files_to_modify": [],
+          "files_to_create": [
+            "source/FastingHistoryDelegate.mc"
+          ],
+          "patterns_from": [
+            "source/FastTrackDelegate.mc"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -E 'class FastingHistoryDelegate|extends.*Delegate|onKey|onSwipe' FastTrack/FastTrack/source/FastingHistoryDelegate.mc",
+            "expected": "Should show class extending input delegate with event handlers"
+          },
+          "implementation_notes": [
+            "Extend WatchUi.BehaviorDelegate or appropriate input delegate",
+            "Handle scroll/navigation between history entries",
+            "Implement onKey() for button presses (up/down to scroll)",
+            "Implement onSwipe() if touch device support needed",
+            "Back button returns to main menu",
+            "Pass selected index changes to view via method calls",
+            "Call WatchUi.requestUpdate() after navigation"
+          ],
+          "status": "completed",
+          "notes": "Created FastingHistoryDelegate.mc for input handling. Extends WatchUi.BehaviorDelegate following FastTrackDelegate.mc pattern. Implements: onBack() for returning to previous screen, onNextPage()/onPreviousPage() for entry navigation, onKey() for physical button support (UP/DOWN/ESC keys), onSwipe() for touch device gestures. Integrates with FastingHistoryView.nextEntry() and previousEntry() methods for scrolling through history entries.",
+          "updated_at": "2025-12-24T20:31:15.012837+00:00"
+        },
+        {
+          "id": "subtask-3-3",
+          "description": "Add UI strings to strings.xml",
+          "service": "garmin_app",
+          "files_to_modify": [
+            "resources/strings/strings.xml"
+          ],
+          "files_to_create": [],
+          "patterns_from": [
+            "resources/strings/strings.xml"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -E 'history_title|history_empty|total_hours|success_rate' FastTrack/FastTrack/resources/strings/strings.xml",
+            "expected": "Should show new string resources for history UI"
+          },
+          "implementation_notes": [
+            "Add strings: history_title, history_empty, total_hours, success_rate, lifetime, weekly, monthly",
+            "Add strings for session details: duration_label, goal_achieved, goal_missed, avg_hr_label, avg_stress_label",
+            "Use descriptive IDs matching usage in view code",
+            "Follow XML format from existing strings"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-4-menu-integration",
+      "name": "Menu Integration",
+      "type": "integration",
+      "description": "Add 'View History' menu item and wire up navigation to history view",
+      "depends_on": [
+        "phase-2-session-integration",
+        "phase-3-ui-views"
+      ],
+      "parallel_safe": false,
+      "subtasks": [
+        {
+          "id": "subtask-4-1",
+          "description": "Add 'View History' menu item to menu.xml",
+          "service": "garmin_app",
+          "files_to_modify": [
+            "resources/menus/menu.xml"
+          ],
+          "files_to_create": [],
+          "patterns_from": [
+            "resources/menus/menu.xml"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -i 'history' FastTrack/FastTrack/resources/menus/menu.xml",
+            "expected": "Should show menu item for viewing history"
+          },
+          "implementation_notes": [
+            "Add menu-item with id='view_history'",
+            "Label should reference @Strings.menu_view_history",
+            "Add corresponding string to strings.xml",
+            "Place logically in menu order (e.g., after main fasting controls)"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-2",
+          "description": "Modify FastTrackMenuDelegate to handle history navigation",
+          "service": "garmin_app",
+          "files_to_modify": [
+            "source/FastTrackMenuDelegate.mc"
+          ],
+          "files_to_create": [],
+          "patterns_from": [
+            "source/FastTrackMenuDelegate.mc"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -A 5 'view_history' FastTrack/FastTrack/source/FastTrackMenuDelegate.mc",
+            "expected": "Should show case handling for view_history menu item"
+          },
+          "implementation_notes": [
+            "Import FastingHistoryView and FastingHistoryDelegate",
+            "In onMenuItem(), add case for :view_history symbol",
+            "Create instances: var view = new FastingHistoryView(); var delegate = new FastingHistoryDelegate(view);",
+            "Navigate with: WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);",
+            "Follow existing pattern from other menu items"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-5-verification",
+      "name": "End-to-End Verification",
+      "type": "integration",
+      "description": "Test complete history flow: save session, view history, verify data persistence",
+      "depends_on": [
+        "phase-4-menu-integration"
+      ],
+      "parallel_safe": false,
+      "subtasks": [
+        {
+          "id": "subtask-5-1",
+          "description": "Manual verification of history feature",
+          "service": "garmin_app",
+          "all_services": true,
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "manual",
+            "instructions": "1. Build and run app in simulator\n2. Start a fast and let it run for 2+ minutes\n3. Stop the fast\n4. Open menu and select 'View History'\n5. Verify session appears with correct duration, date, and biometrics\n6. Repeat steps 2-5 to create multiple history entries\n7. Verify aggregate stats (total hours, success rate) are calculated correctly\n8. Create 30+ sessions to verify auto-pruning of oldest entries\n9. Restart app and verify history persists\n10. Test edge cases: empty history, missing biometrics"
+          },
+          "implementation_notes": [
+            "Use Garmin Connect IQ simulator for testing",
+            "Test on target device: approachs50",
+            "Verify no crashes or null pointer exceptions",
+            "Check memory usage stays within watch constraints",
+            "Verify UI renders correctly on watch screen size",
+            "Test navigation (scrolling, back button)",
+            "Verify date/time formatting is user-friendly"
+          ],
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_phases": 5,
+    "total_subtasks": 8,
+    "services_involved": [
+      "garmin_app"
+    ],
+    "estimated_complexity": "medium",
+    "estimated_time": "4-6 hours",
+    "parallelism": {
+      "max_parallel_phases": 2,
+      "parallel_groups": [
+        {
+          "phases": [
+            "phase-2-session-integration",
+            "phase-3-ui-views"
+          ],
+          "reason": "Both depend only on phase-1-data-model and modify different file sets. Phase 2 modifies FastingSession.mc while Phase 3 creates new view files."
+        }
+      ],
+      "recommended_workers": 2,
+      "speedup_estimate": "1.4x faster than sequential (phases 2-3 can overlap)"
+    },
+    "startup_command": "source auto-claude/.venv/bin/activate && python auto-claude/run.py --spec 001 --parallel 2"
+  },
+  "verification_strategy": {
+    "risk_level": "medium",
+    "skip_validation": false,
+    "test_creation_phase": "post_implementation",
+    "test_types_required": [
+      "integration"
+    ],
+    "security_scanning_required": false,
+    "staging_deployment_required": false,
+    "acceptance_criteria": [
+      "Last 30 fasting sessions stored on device",
+      "History view accessible from main menu",
+      "Each entry shows: date, duration, goal status, avg HR, avg stress",
+      "Total fasting hours displayed (lifetime/weekly/monthly)",
+      "Successful vs incomplete fasts tracked",
+      "Oldest entries automatically pruned when storage limit reached",
+      "History persists across app restarts",
+      "No crashes or null pointer exceptions",
+      "UI renders correctly on target watch device"
+    ],
+    "verification_steps": [
+      {
+        "name": "Build Verification",
+        "command": "echo 'Build via Garmin Connect IQ IDE: MonkeyC: Build for Device'",
+        "expected_outcome": "Clean build with no compilation errors",
+        "type": "build",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Simulator Testing",
+        "command": "echo 'Run in simulator: MonkeyC: Run'",
+        "expected_outcome": "App launches, history feature accessible and functional",
+        "type": "integration",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Storage Verification",
+        "command": "echo 'Manual: Create 35+ sessions and verify only last 30 are retained'",
+        "expected_outcome": "FIFO pruning works correctly, no data corruption",
+        "type": "integration",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Persistence Verification",
+        "command": "echo 'Manual: Restart app and verify history data persists'",
+        "expected_outcome": "All history entries survive app restart",
+        "type": "integration",
+        "required": true,
+        "blocking": true
+      }
+    ],
+    "reasoning": "Medium risk due to data persistence with pruning logic. Requires thorough integration testing to verify circular buffer and storage correctness. No unit test framework available for MonkeyC, so manual simulator testing is primary verification method."
+  },
+  "qa_acceptance": {
+    "unit_tests": {
+      "required": false,
+      "commands": [],
+      "minimum_coverage": null,
+      "notes": "MonkeyC does not have a standard unit testing framework"
+    },
+    "integration_tests": {
+      "required": true,
+      "commands": [
+        "echo 'Manual simulator testing required'"
+      ],
+      "services_to_test": [
+        "garmin_app"
+      ],
+      "notes": "Manual testing in Garmin Connect IQ simulator"
+    },
+    "e2e_tests": {
+      "required": false,
+      "commands": [],
+      "flows": []
+    },
+    "browser_verification": {
+      "required": false,
+      "pages": []
+    },
+    "simulator_verification": {
+      "required": true,
+      "test_scenarios": [
+        "Start fast, stop fast, verify history entry created",
+        "Navigate to history view via menu",
+        "Scroll through multiple history entries",
+        "Verify aggregate stats calculations",
+        "Test with 30+ sessions to verify pruning",
+        "Restart app and verify persistence",
+        "Test empty history state",
+        "Test sessions with missing biometrics (show N/A)"
+      ]
+    },
+    "database_verification": {
+      "required": false,
+      "checks": []
+    }
+  },
+  "qa_signoff": null,
+  "status": "human_review",
+  "planStatus": "review",
+  "updated_at": "2025-12-24T20:09:00.016Z",
+  "last_updated": "2025-12-24T20:31:15.012837+00:00"
+}
