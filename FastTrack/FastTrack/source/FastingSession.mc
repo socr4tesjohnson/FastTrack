@@ -9,13 +9,17 @@ class FastingSession {
     private var timer as Timer;
     private var biometricsTracker as BiometricsTracker;
     private var notifications as FastingNotifications;
-    
+    private var fastingHistory as FastingHistory;
+
     // Callback for timer updates
-    private var onTimerUpdate as Method(timeElapsed as Number) as Void;    function initialize(timerCallback as Method(timeElapsed as Number) as Void) {
+    private var onTimerUpdate as Method(timeElapsed as Number) as Void;
+
+    function initialize(timerCallback as Method(timeElapsed as Number) as Void) {
         onTimerUpdate = timerCallback;
         timer = new Timer.Timer();
         biometricsTracker = new BiometricsTracker();
         notifications = new FastingNotifications();
+        fastingHistory = new FastingHistory();
     }
 
     function startFast() as Void {
@@ -26,21 +30,39 @@ class FastingSession {
             Storage.setValue("fastStartTime", startTime.value());
             Storage.setValue("isActiveFast", true);
         }
-    }    function stopFast() as Void {
+    }
+
+    function stopFast() as Void {
         if (isActive && startTime != null) {
             var endTime = Time.now();
-            var stats = biometricsTracker.getSessionStats(startTime, endTime);
-            
+            var sessionStartTime = startTime; // Save reference before clearing
+            var stats = biometricsTracker.getSessionStats(sessionStartTime, endTime);
+
+            // Calculate duration in seconds
+            var durationSeconds = endTime.compare(sessionStartTime);
+
+            // Save session to history
+            var sessionData = {
+                "date" => sessionStartTime.value(),
+                "duration" => durationSeconds,
+                "goalAchieved" => true, // Default to true when manually stopped (user completed their fast)
+                "avgHeartRate" => stats["avgHeartRate"],
+                "avgStress" => stats["avgStress"],
+                "startTime" => sessionStartTime.value(),
+                "endTime" => endTime.value()
+            };
+            fastingHistory.saveSession(sessionData);
+
             timer.stop();
             isActive = false;
             startTime = null;
             elapsedTime = 0;
-            
+
             Storage.setValue("isActiveFast", false);
             Storage.deleteValue("fastStartTime");
-            
+
             // Show summary
-            var hours = endTime.compare(startTime) / 3600.0;
+            var hours = durationSeconds / 3600.0;
             var summary = Lang.format(
                 "Fast complete!\nDuration: $1$:$2$ hours\nAvg HR: $3$ bpm\nAvg Stress: $4$",
                 [
@@ -50,10 +72,12 @@ class FastingSession {
                     stats["avgStress"] != null ? stats["avgStress"].format("%.0f") : "--"
                 ]
             );
-            
+
             WatchUi.showToast(summary, null);
         }
-    }function updateTimer() as Void {
+    }
+
+    function updateTimer() as Void {
         if (startTime != null && isActive) {
             var currentTime = Time.now();
             elapsedTime = currentTime.compare(startTime);
