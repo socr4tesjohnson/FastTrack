@@ -101,3 +101,142 @@ Edge Cases to Handle:
 4. Null startTime → Default to 0 seconds elapsed
 
 === END SESSION 1 ===
+
+=== SESSION 2: Subtask 1-2 Verification ===
+
+Subtask: subtask-1-2 - Implement Storage access and time calculation logic in onUpdate
+Status: COMPLETED
+
+Verification Results:
+- Storage access and time calculation was already fully implemented in subtask-1-1
+- GlanceView.mc contains complete implementation following FastingSession.mc patterns
+
+Implementation Verified:
+✅ Storage.getValue("isActiveFast") as Boolean? - Line 16
+✅ Storage.getValue("fastStartTime") as Number? - Line 17
+✅ Null checks: if (isActive == true && storedStartTime != null) - Line 21
+✅ Time.Moment creation: new Time.Moment(storedStartTime) - Line 22
+✅ Elapsed calculation: currentTime.compare(startTime) - Line 24
+✅ Hours/minutes conversion: integer division/modulo - Lines 33-34
+✅ HH:MM formatting: Lang.format with %02d padding - Lines 42-45
+✅ Negative time handling: cap at 0 - Lines 27-29
+✅ Overflow handling: cap at 99:59 - Lines 37-40
+
+Pattern Compliance:
+- Matches FastingSession.mc restoreState() pattern (lines 74-82)
+- Matches FastingSession.mc updateTimer() pattern (lines 56-63)
+
+No code changes required - implementation was complete from subtask-1-1.
+
+=== END SESSION 2 ===
+
+=== SESSION 3: Subtask 1-3 Verification ===
+
+Subtask: subtask-1-3 - Implement drawing logic with status and time display
+Status: COMPLETED
+
+Verification Results:
+- Drawing logic was already fully implemented in subtask-1-1 commit (33ef6dd)
+- GlanceView.mc contains complete drawing implementation following FastTrackView.mc patterns
+
+Implementation Verified:
+✅ Clear screen with black background - Lines 51-52: dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK); dc.clear();
+✅ Set text color to white - Line 53: dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+✅ Draw status text at 1/3 height - Lines 56-62: FONT_MEDIUM, dc.getHeight() / 3
+✅ Draw elapsed time at 2/3 height - Lines 65-71: FONT_NUMBER_MEDIUM, dc.getHeight() * 2 / 3
+✅ HH:MM format - Lines 42-45: Lang.format("$1$:$2$", [...])
+✅ Status text logic - Line 48: (isActive == true) ? "Fasting" : "Not Fasting"
+✅ Responsive positioning - Uses dc.getWidth()/dc.getHeight() for all positions
+
+Pattern Compliance:
+- Matches FastTrackView.mc onUpdate() drawing pattern (lines 28-52)
+- Uses same color scheme: COLOR_BLACK background, COLOR_WHITE text
+- Uses spec-required fonts: FONT_MEDIUM for status, FONT_NUMBER_MEDIUM for time
+
+Build Verification:
+- Note: monkeyc command not available in this environment
+- Code review confirms syntactically correct Monkey C
+- All patterns match existing FastTrackView.mc implementation
+
+No code changes required - implementation was complete from subtask-1-1.
+
+=== END SESSION 3 ===
+
+=== SESSION 4: Subtask 2-1 Simulator Verification ===
+
+Subtask: subtask-2-1 - Verify glance displays correctly in simulator
+Status: CODE REVIEW COMPLETE - REQUIRES MANUAL SIMULATOR VERIFICATION
+
+Code Quality Review (Automated):
+✅ :glance annotation present on GlanceView class (line 7)
+✅ :glance annotation present on getGlanceView() method (FastTrackApp.mc line 24)
+✅ Storage access includes null checks (line 21: isActive == true && storedStartTime != null)
+✅ Time formatting uses HH:MM pattern (lines 42-45: Lang.format)
+✅ API Level 5.0.0 in manifest (glances require 3.1.0+) - Compatible
+✅ Edge cases handled: negative time capped at 0 (lines 27-29)
+✅ Edge cases handled: overflow capped at 99:59 (lines 37-40)
+✅ Drawing follows FastTrackView.mc patterns (black background, white text)
+✅ Responsive positioning using dc.getWidth()/dc.getHeight()
+✅ Status text: FONT_MEDIUM at 1/3 height
+✅ Elapsed time: FONT_NUMBER_MEDIUM at 2/3 height
+
+Files Verified:
+- FastTrack/FastTrack/source/GlanceView.mc (74 lines)
+- FastTrack/FastTrack/source/FastTrackApp.mc (33 lines, getGlanceView added)
+- FastTrack/FastTrack/manifest.xml (API level 5.0.0)
+
+=== MANUAL VERIFICATION CHECKLIST ===
+
+The following steps must be performed by a human tester in the Garmin Connect IQ Simulator:
+
+Build & Launch:
+  [ ] Open FastTrack project in VS Code with Connect IQ extension
+  [ ] Run "Monkey C: Run" from Command Palette OR:
+      cd FastTrack/FastTrack && monkeyc -d approachs50 -f monkey.jungle -o FastTrack.prg && connectiq
+  [ ] Verify build completes without errors
+
+Add Glance to Watch Face:
+  [ ] In simulator, right-click the watch face
+  [ ] Select "Add Glance" → "FastTrack"
+  [ ] Verify FastTrack glance appears in glance carousel
+
+Test "Not Fasting" State:
+  [ ] View glance when no active fast exists
+  [ ] Verify glance displays "Not Fasting" text
+  [ ] Verify glance displays "00:00" time
+
+Test "Fasting" State:
+  [ ] Open main FastTrack app
+  [ ] Start a fast using the app
+  [ ] Exit to watch face and view glance
+  [ ] Verify glance displays "Fasting" text
+  [ ] Verify glance displays elapsed time in HH:MM format
+  [ ] Verify time updates as fast progresses (system-managed refresh)
+
+Test Tap Interaction:
+  [ ] Tap/click on glance in simulator
+  [ ] Verify full FastTrack app opens when glance is tapped
+
+Visual Consistency:
+  [ ] Verify black background matches main app
+  [ ] Verify white text matches main app
+  [ ] Verify font sizes are readable and appropriate
+
+Error Checking:
+  [ ] Monitor simulator console for any errors
+  [ ] Verify no crashes when viewing glance
+  [ ] Verify no crashes when transitioning between glance and app
+
+=== VERIFICATION NOTES ===
+
+Note: This subtask requires manual testing in the Garmin Connect IQ Simulator
+which cannot be performed programmatically. The automated code quality review
+above confirms the implementation follows all required patterns and best practices.
+
+Build command for testing:
+  cd FastTrack/FastTrack && monkeyc -d approachs50 -f monkey.jungle -o FastTrack.prg
+
+Simulator command:
+  connectiq
+
+=== END SESSION 4 ===
