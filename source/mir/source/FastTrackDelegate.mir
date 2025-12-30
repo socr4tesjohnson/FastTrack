@@ -1,0 +1,1130 @@
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 5; @symbol_classdef = [FastTrackDelegate,5,6,23]; @symbol_extends<0> = [WatchUi,5,32,39]; @symbol_extends<1> = [BehaviorDelegate,5,40,56]; ]
+class FastTrackDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 6; @position = 16; @symbol_vardef = [view,6,16,20]; @symbol_type<0> = [FastTrackView,6,24,37]; ]
+    private
+    var view as FastTrackView;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 9; @position = 16; @symbol_vardef = [touchHoldActive,9,16,31]; @symbol_type<0> = [Toybox,9,35,41]; @symbol_type<1> = [Lang,9,42,46]; @symbol_type<2> = [Boolean,9,47,54]; ]
+    private
+    var touchHoldActive as Toybox.Lang.Boolean = false;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 10; @position = 16; @symbol_vardef = [lastKeyPressed,10,16,30]; ]
+    private
+    var lastKeyPressed;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 11; @position = 16; @symbol_vardef = [hasKeyPress,11,16,27]; @symbol_type<0> = [Toybox,11,31,37]; @symbol_type<1> = [Lang,11,38,42]; @symbol_type<2> = [Boolean,11,43,50]; ]
+    private
+    var hasKeyPress as Toybox.Lang.Boolean = false;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 12; @position = 16; @symbol_vardef = [lastKeyPressStartMs,12,16,35]; @symbol_type<0> = [Toybox,12,39,45]; @symbol_type<1> = [Lang,12,46,50]; @symbol_type<2> = [Number,12,51,57]; ]
+    private
+    var lastKeyPressStartMs as Toybox.Lang.Number = 0;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 13; @position = 16; @symbol_vardef = [longPressThresholdMs,13,16,36]; @symbol_type<0> = [Toybox,13,40,46]; @symbol_type<1> = [Lang,13,47,51]; @symbol_type<2> = [Number,13,52,58]; ]
+    private
+    var longPressThresholdMs as Toybox.Lang.Number = 600;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 15; @symbol_functiondef = [initialize,15,13,23]; @symbol_param<0> = [fastTrackView,15,24,37]; @symbol_param<0>_type<0> = [FastTrackView,15,41,54]; ]
+    function initialize(fastTrackView as FastTrackView) as Void {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_15_56_18_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 16 8 ]
+        symbol [ BehaviorDelegate %tmp.2 16 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 16 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 17 8 ]
+        %tmp.4 = lgetv %fastTrackView;
+        symbol [ fastTrackView %tmp.4 17 15 28 ];
+        symbol [ view ? 17 8 12 ];
+        putv self :view %tmp.4;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_15_56_18_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 20; @symbol_functiondef = [onSelect,20,13,21]; ]
+    function onSelect() {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_20_24_29_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 21 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_20_24_29_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_20_24_29_4_stop" ]
+        %fastingSession.1 = local;
+        symbol [ fastingSession %fastingSession.1 21 12 26 ];
+        symbol [ view %tmp.2 21 29 33 ];
+        %tmp.2 = getv ? :view;
+        symbol [ getFastingSession %tmp.3 21 34 51 ];
+        %tmp.3 = getv function %tmp.2 :getFastingSession;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %fastingSession.1 %tmp.4;
+        symbol [ fastingSession %fastingSession.1 21 12 26 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 22 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_stmt:
+        %tmp.5 = lgetv %fastingSession.1;
+        symbol [ fastingSession %tmp.5 22 12 26 ];
+        symbol [ isActiveFast %tmp.6 22 27 39 ];
+        %tmp.6 = getv function %tmp.5 :isActiveFast;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        bf %tmp.7 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_else_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_43_24_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 23 12 ]
+        %tmp.8 = self;
+        symbol [ confirmStopFast %tmp.9 23 12 27 ];
+        %tmp.9 = getv function %tmp.8 :confirmStopFast;
+        invoke %tmp.8 %tmp.9();
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_43_24_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_else_false:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_24_15_27_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 26 12 ]
+        %tmp.10 = self;
+        symbol [ showFastGoalSelectionMenu %tmp.11 26 12 37 ];
+        %tmp.11 = getv function %tmp.10 :showFastGoalSelectionMenu;
+        invoke %tmp.10 %tmp.11();
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_24_15_27_8_stop:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_22_8_27_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 28 8 ]
+        %tmp.12 = true;
+        ret %tmp.12;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_20_24_29_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 31; @symbol_functiondef = [onMenu,31,13,19]; @symbol_return<0> = [Boolean,31,25,32]; ]
+    function onMenu() as Boolean {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_31_33_34_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 32 8 ]
+        symbol [ WatchUi %tmp.1 32 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.2 32 16 24 ];
+        %tmp.2 = getv function %tmp.1 :pushView;
+        symbol [ Rez %tmp.6 32 29 32 ];
+        %tmp.6 = getv ? :Rez;
+        symbol [ Menus %tmp.7 32 33 38 ];
+        %tmp.7 = getv %tmp.6 :Menus;
+        symbol [ MainMenu %tmp.8 32 39 47 ];
+        %tmp.8 = getv function ? %tmp.7 :MainMenu;
+        %tmp.3 = newc %tmp.8 ();
+        symbol [ FastTrackMenuDelegate %tmp.12 32 55 76 ];
+        %tmp.12 = getv ? :FastTrackMenuDelegate;
+        symbol [ view %tmp.14 32 77 81 ];
+        %tmp.14 = getv ? :view;
+        %tmp.9 = newc %tmp.12 (%tmp.14);
+        symbol [ WatchUi %tmp.15 32 84 91 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.16 32 92 100 ];
+        %tmp.16 = getv %tmp.15 :SLIDE_UP;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.9, %tmp.16);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 33 8 ]
+        %tmp.17 = true;
+        ret %tmp.17;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_31_33_34_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 37; @symbol_functiondef = [onNextPage,37,13,23]; ]
+    function onNextPage() {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_37_26_40_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 38 8 ]
+        symbol [ view %tmp.2 38 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ handleScroll %tmp.3 38 13 25 ];
+        %tmp.3 = getv function %tmp.2 :handleScroll;
+        %tmp.4 = 1;
+        invoke %tmp.2 %tmp.3(%tmp.4);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 39 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_37_26_40_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 42; @symbol_functiondef = [onPreviousPage,42,13,27]; ]
+    function onPreviousPage() {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_42_30_45_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 43 8 ]
+        symbol [ view %tmp.2 43 8 12 ];
+        %tmp.2 = getv ? :view;
+        symbol [ handleScroll %tmp.3 43 13 25 ];
+        %tmp.3 = getv function %tmp.2 :handleScroll;
+        %tmp.4 = -1;
+        invoke %tmp.2 %tmp.3(%tmp.4);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 44 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_42_30_45_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 48; @symbol_functiondef = [onHold,48,13,19]; @symbol_param<0> = [clickEvent,48,20,30]; ]
+    function onHold(clickEvent) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_48_32_52_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 50 8 ]
+        %tmp.1 = true;
+        symbol [ touchHoldActive ? 50 8 23 ];
+        putv self :touchHoldActive %tmp.1;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 51 8 ]
+        %tmp.2 = true;
+        ret %tmp.2;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_48_32_52_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 54; @symbol_functiondef = [onRelease,54,13,22]; @symbol_param<0> = [clickEvent,54,23,33]; ]
+    function onRelease(clickEvent) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_54_35_65_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 56 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_8_62_8_if_stmt:
+        symbol [ touchHoldActive %tmp.2 56 12 27 ];
+        %tmp.2 = getv ? :touchHoldActive;
+        %tmp.3 = true;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_8_62_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_8_62_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_37_62_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 57 12 ]
+        %tmp.5 = false;
+        symbol [ touchHoldActive ? 57 12 27 ];
+        putv self :touchHoldActive %tmp.5;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 58 12 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_stmt:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_16_58_88_begin:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_16_58_60_begin:
+        symbol [ view %tmp.7 58 16 20 ];
+        %tmp.7 = getv ? :view;
+        %tmp.8 = null;
+        %tmp.9 = ne %tmp.7 %tmp.8;
+        bf %tmp.9 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_32_58_60_true:
+        symbol [ view %tmp.11 58 33 37 ];
+        %tmp.11 = getv ? :view;
+        %tmp.12 = as %tmp.11 { (!Null) };
+        %tmp.14 = const :isOnMilestonePage;
+        symbol [ isOnMilestonePage %tmp.14 58 43 60 const ];
+        %tmp.15 = canhazplz %tmp.12 %tmp.14;
+        push %tmp.15;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_32_58_60_end:
+        %tmp.16 = phi [%tmp.9 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_16_58_60_begin] [%tmp.15 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_32_58_60_true] [%tmp.16 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_32_58_60_end];
+        bf %tmp.16 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_65_58_88_true:
+        symbol [ view %tmp.18 58 65 69 ];
+        %tmp.18 = getv ? :view;
+        %tmp.19 = as %tmp.18 { (interface { var isOnMilestonePage; }) && (!Null) };
+        symbol [ isOnMilestonePage %tmp.20 58 70 87 ];
+        %tmp.20 = getv function %tmp.19 :isOnMilestonePage;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        push %tmp.21;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_65_58_88_end:
+        %tmp.22 = phi [%tmp.16 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_16_58_88_begin] [%tmp.21 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_65_58_88_true] [%tmp.22 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_65_58_88_end];
+        bf %tmp.22 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_91_61_12_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 59 16 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_16_59_71_if_stmt:
+        symbol [ view %tmp.24 59 20 24 ];
+        %tmp.24 = getv ? :view;
+        %tmp.26 = const :jumpToMainPage;
+        symbol [ jumpToMainPage %tmp.26 59 30 44 const ];
+        %tmp.27 = canhazplz %tmp.24 %tmp.26;
+        bf %tmp.27 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_16_59_71_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_16_59_71_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_46_59_71_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 59 48 ]
+        symbol [ view %tmp.29 59 48 52 ];
+        %tmp.29 = getv ? :view;
+        %tmp.30 = as %tmp.29 { (interface { var jumpToMainPage; }) };
+        symbol [ jumpToMainPage %tmp.31 59 53 67 ];
+        %tmp.31 = getv function %tmp.30 :jumpToMainPage;
+        invoke %tmp.30 %tmp.31();
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_46_59_71_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_16_59_71_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_59_16_59_71_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 60 16 ]
+        %tmp.32 = true;
+        ret %tmp.32;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_91_61_12_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_58_12_61_12_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_37_62_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_8_62_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_56_8_62_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 63 8 ]
+        %tmp.33 = false;
+        symbol [ touchHoldActive ? 63 8 23 ];
+        putv self :touchHoldActive %tmp.33;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 64 8 ]
+        %tmp.34 = false;
+        ret %tmp.34;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_54_35_65_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 68; @symbol_functiondef = [onKeyPressed,68,13,25]; @symbol_param<0> = [keyEvent,68,26,34]; ]
+    function onKeyPressed(keyEvent) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_68_36_80_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 70 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_68_36_80_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_68_36_80_4_stop" ]
+        %k.1 = local;
+        symbol [ k %k.1 70 12 13 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 70 16 24 ];
+        symbol [ getKey %tmp.2 70 25 31 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %k.1 %tmp.3;
+        symbol [ k %k.1 70 12 13 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 71 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_stmt:
+        %tmp.4 = lgetv %k.1;
+        symbol [ k %tmp.4 71 12 13 ];
+        symbol [ WatchUi %tmp.5 71 17 24 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.6 71 25 34 ];
+        %tmp.6 = getv %tmp.5 :KEY_ENTER;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_else_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_36_75_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 72 12 ]
+        %tmp.8 = lgetv %k.1;
+        symbol [ k %tmp.8 72 29 30 ];
+        symbol [ lastKeyPressed ? 72 12 26 ];
+        putv self :lastKeyPressed %tmp.8;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 73 12 ]
+        %tmp.9 = true;
+        symbol [ hasKeyPress ? 73 12 23 ];
+        putv self :hasKeyPress %tmp.9;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 74 12 ]
+        symbol [ System %tmp.10 74 34 40 ];
+        %tmp.10 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.11 74 41 49 ];
+        %tmp.11 = getv function %tmp.10 :getTimer;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        symbol [ lastKeyPressStartMs ? 74 12 31 ];
+        putv self :lastKeyPressStartMs %tmp.12;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_36_75_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_else_false:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_75_15_78_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 76 12 ]
+        %tmp.13 = false;
+        symbol [ hasKeyPress ? 76 12 23 ];
+        putv self :hasKeyPress %tmp.13;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 77 12 ]
+        %tmp.14 = 0;
+        symbol [ lastKeyPressStartMs ? 77 12 31 ];
+        putv self :lastKeyPressStartMs %tmp.14;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_75_15_78_8_stop:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_71_8_78_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 79 8 ]
+        %tmp.15 = false;
+        ret %tmp.15;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_68_36_80_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 82; @symbol_functiondef = [onKeyReleased,82,13,26]; @symbol_param<0> = [keyEvent,82,27,35]; ]
+    function onKeyReleased(keyEvent) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 83 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_stop" ]
+        %k.1 = local;
+        symbol [ k %k.1 83 12 13 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 83 16 24 ];
+        symbol [ getKey %tmp.2 83 25 31 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %k.1 %tmp.3;
+        symbol [ k %k.1 83 12 13 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 84 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_stop" ]
+        %handled.2 = local;
+        symbol [ handled %handled.2 84 12 19 ];
+        %tmp.4 = false;
+        lputv %handled.2 %tmp.4;
+        symbol [ handled %handled.2 84 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 85 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_stmt:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_12_85_40_begin:
+        symbol [ hasKeyPress %tmp.6 85 12 23 ];
+        %tmp.6 = getv ? :hasKeyPress;
+        %tmp.7 = true;
+        %tmp.8 = eq %tmp.6 %tmp.7;
+        bf %tmp.8 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_35_85_40_true:
+        %tmp.9 = lgetv %k.1;
+        symbol [ k %tmp.9 85 35 36 ];
+        symbol [ lastKeyPressed %tmp.11 85 40 54 ];
+        %tmp.11 = getv ? :lastKeyPressed;
+        %tmp.12 = eq %tmp.9 %tmp.11;
+        push %tmp.12;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_35_85_40_end:
+        %tmp.13 = phi [%tmp.8 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_12_85_40_begin] [%tmp.12 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_35_85_40_true] [%tmp.13 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_35_85_40_end];
+        bf %tmp.13 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 86 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_stop" ]
+        %nowMs.3 = local;
+        symbol [ nowMs %nowMs.3 86 16 21 ];
+        symbol [ System %tmp.14 86 24 30 ];
+        %tmp.14 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.15 86 31 39 ];
+        %tmp.15 = getv function %tmp.14 :getTimer;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        lputv %nowMs.3 %tmp.16;
+        symbol [ nowMs %nowMs.3 86 16 21 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 87 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_stop" ]
+        %pressDuration.4 = local;
+        symbol [ pressDuration %pressDuration.4 87 16 29 ];
+        %tmp.17 = lgetv %nowMs.3;
+        symbol [ nowMs %tmp.17 87 32 37 ];
+        symbol [ lastKeyPressStartMs %tmp.19 87 40 59 ];
+        %tmp.19 = getv ? :lastKeyPressStartMs;
+        %tmp.20 = sub %tmp.17 %tmp.19;
+        lputv %pressDuration.4 %tmp.20;
+        symbol [ pressDuration %pressDuration.4 87 16 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 88 12 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_12_93_12_if_stmt:
+        %tmp.21 = lgetv %pressDuration.4;
+        symbol [ pressDuration %tmp.21 88 16 29 ];
+        symbol [ longPressThresholdMs %tmp.23 88 33 53 ];
+        %tmp.23 = getv ? :longPressThresholdMs;
+        %tmp.24 = gte %tmp.21 %tmp.23;
+        bf %tmp.24 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_12_93_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_12_93_12_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_55_93_12_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 89 16 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_stmt:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_20_89_92_begin:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_20_89_64_begin:
+        symbol [ view %tmp.26 89 20 24 ];
+        %tmp.26 = getv ? :view;
+        %tmp.27 = null;
+        %tmp.28 = ne %tmp.26 %tmp.27;
+        bf %tmp.28 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_36_89_64_true:
+        symbol [ view %tmp.30 89 37 41 ];
+        %tmp.30 = getv ? :view;
+        %tmp.31 = as %tmp.30 { (!Null) };
+        %tmp.33 = const :isOnMilestonePage;
+        symbol [ isOnMilestonePage %tmp.33 89 47 64 const ];
+        %tmp.34 = canhazplz %tmp.31 %tmp.33;
+        push %tmp.34;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_36_89_64_end:
+        %tmp.35 = phi [%tmp.28 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_20_89_64_begin] [%tmp.34 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_36_89_64_true] [%tmp.35 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_36_89_64_end];
+        bf %tmp.35 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_69_89_92_true:
+        symbol [ view %tmp.37 89 69 73 ];
+        %tmp.37 = getv ? :view;
+        %tmp.38 = as %tmp.37 { (interface { var isOnMilestonePage; }) && (!Null) };
+        symbol [ isOnMilestonePage %tmp.39 89 74 91 ];
+        %tmp.39 = getv function %tmp.38 :isOnMilestonePage;
+        %tmp.40 = invoke %tmp.38 %tmp.39();
+        push %tmp.40;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_69_89_92_end:
+        %tmp.41 = phi [%tmp.35 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_20_89_92_begin] [%tmp.40 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_69_89_92_true] [%tmp.41 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_69_89_92_end];
+        bf %tmp.41 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_95_92_16_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 90 20 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_20_90_75_if_stmt:
+        symbol [ view %tmp.43 90 24 28 ];
+        %tmp.43 = getv ? :view;
+        %tmp.45 = const :jumpToMainPage;
+        symbol [ jumpToMainPage %tmp.45 90 34 48 const ];
+        %tmp.46 = canhazplz %tmp.43 %tmp.45;
+        bf %tmp.46 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_20_90_75_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_20_90_75_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_50_90_75_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 90 52 ]
+        symbol [ view %tmp.48 90 52 56 ];
+        %tmp.48 = getv ? :view;
+        %tmp.49 = as %tmp.48 { (interface { var jumpToMainPage; }) };
+        symbol [ jumpToMainPage %tmp.50 90 57 71 ];
+        %tmp.50 = getv function %tmp.49 :jumpToMainPage;
+        invoke %tmp.49 %tmp.50();
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_50_90_75_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_20_90_75_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_90_20_90_75_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 91 20 ]
+        %tmp.51 = true;
+        lputv %handled.2 %tmp.51;
+        symbol [ handled %handled.2 91 20 27 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_95_92_16_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_89_16_92_16_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_55_93_12_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_12_93_12_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_88_12_93_12_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_56_94_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_85_8_94_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 96 8 ]
+        %tmp.52 = false;
+        symbol [ hasKeyPress ? 96 8 19 ];
+        putv self :hasKeyPress %tmp.52;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 97 8 ]
+        %tmp.53 = 0;
+        symbol [ lastKeyPressStartMs ? 97 8 27 ];
+        putv self :lastKeyPressStartMs %tmp.53;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 98 8 ]
+        %tmp.54 = lgetv %handled.2;
+        symbol [ handled %tmp.54 98 15 22 ];
+        ret %tmp.54;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_82_37_99_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 101; @symbol_functiondef = [showFastGoalMenu,101,13,29]; ]
+    function showFastGoalMenu() {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_101_32_105_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 104 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_8_104_152_if_stmt:
+        symbol [ WatchUi %tmp.1 104 12 19 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.3 = const :showToast;
+        symbol [ showToast %tmp.3 104 25 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_8_104_152_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_8_104_152_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_36_104_152_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 104 38 ]
+        try @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_beginTry @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_endTry @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_catch @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_beginTry:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_42_104_138_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 104 44 ]
+        symbol [ WatchUi %tmp.5 104 44 51 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ showToast %tmp.6 104 52 61 ];
+        %tmp.6 = getv function %tmp.5 :showToast;
+        %tmp.7 = "Please set your fast goal in the app settings or tell your coach.";
+        %tmp.8 = null;
+        invoke %tmp.5 %tmp.6(%tmp.7, %tmp.8);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_42_104_138_stop:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_endTry:
+        jsr @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally;
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_catch:
+        %tmp.9 = exception;
+        push %tmp.9;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 104 140 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_catch" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_140_104_150_end" ]
+        %e.1 = local;
+        symbol [ e %e.1 104 146 147 ];
+        %tmp.10 = dup %tmp.9;
+        lputv %e.1 %tmp.10;
+        symbol [ e %e.1 104 146 147 ];
+        jsr @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally;
+        pop;
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_140_104_150_end:
+        try @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_catch @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_140_104_150_end @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_140_104_150_end @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally;
+        jsr @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally;
+        throw %tmp.9;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_finally:
+        jsrret;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_38_104_150_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_36_104_152_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_8_104_152_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_104_8_104_152_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_101_32_105_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 107; @symbol_functiondef = [showFastGoalSelectionMenu,107,13,38]; ]
+    function showFastGoalSelectionMenu() {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_107_41_118_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 109 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_107_41_118_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_107_41_118_4_stop" ]
+        %menu.1 = local;
+        symbol [ menu %menu.1 109 12 16 ];
+        symbol [ WatchUi %tmp.3 109 23 30 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ Menu %tmp.4 109 31 35 ];
+        %tmp.4 = getv function ? %tmp.3 :Menu;
+        %tmp.1 = newc %tmp.4 ();
+        lputv %menu.1 %tmp.1;
+        symbol [ menu %menu.1 109 12 16 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 110 8 ]
+        %tmp.5 = lgetv %menu.1;
+        symbol [ menu %tmp.5 110 8 12 ];
+        symbol [ addItem %tmp.6 110 13 20 ];
+        %tmp.6 = getv function %tmp.5 :addItem;
+        %tmp.7 = "12 hours";
+        %tmp.9 = const :h12;
+        symbol [ h12 %tmp.9 110 34 37 const ];
+        invoke %tmp.5 %tmp.6(%tmp.7, %tmp.9);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 111 8 ]
+        %tmp.10 = lgetv %menu.1;
+        symbol [ menu %tmp.10 111 8 12 ];
+        symbol [ addItem %tmp.11 111 13 20 ];
+        %tmp.11 = getv function %tmp.10 :addItem;
+        %tmp.12 = "14 hours";
+        %tmp.14 = const :h14;
+        symbol [ h14 %tmp.14 111 34 37 const ];
+        invoke %tmp.10 %tmp.11(%tmp.12, %tmp.14);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 112 8 ]
+        %tmp.15 = lgetv %menu.1;
+        symbol [ menu %tmp.15 112 8 12 ];
+        symbol [ addItem %tmp.16 112 13 20 ];
+        %tmp.16 = getv function %tmp.15 :addItem;
+        %tmp.17 = "16 hours";
+        %tmp.19 = const :h16;
+        symbol [ h16 %tmp.19 112 34 37 const ];
+        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.19);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 113 8 ]
+        %tmp.20 = lgetv %menu.1;
+        symbol [ menu %tmp.20 113 8 12 ];
+        symbol [ addItem %tmp.21 113 13 20 ];
+        %tmp.21 = getv function %tmp.20 :addItem;
+        %tmp.22 = "18 hours";
+        %tmp.24 = const :h18;
+        symbol [ h18 %tmp.24 113 34 37 const ];
+        invoke %tmp.20 %tmp.21(%tmp.22, %tmp.24);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 114 8 ]
+        %tmp.25 = lgetv %menu.1;
+        symbol [ menu %tmp.25 114 8 12 ];
+        symbol [ addItem %tmp.26 114 13 20 ];
+        %tmp.26 = getv function %tmp.25 :addItem;
+        %tmp.27 = "20 hours";
+        %tmp.29 = const :h20;
+        symbol [ h20 %tmp.29 114 34 37 const ];
+        invoke %tmp.25 %tmp.26(%tmp.27, %tmp.29);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 115 8 ]
+        %tmp.30 = lgetv %menu.1;
+        symbol [ menu %tmp.30 115 8 12 ];
+        symbol [ addItem %tmp.31 115 13 20 ];
+        %tmp.31 = getv function %tmp.30 :addItem;
+        %tmp.32 = "24 hours";
+        %tmp.34 = const :h24;
+        symbol [ h24 %tmp.34 115 34 37 const ];
+        invoke %tmp.30 %tmp.31(%tmp.32, %tmp.34);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 117 8 ]
+        symbol [ WatchUi %tmp.35 117 8 15 ];
+        %tmp.35 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.36 117 16 24 ];
+        %tmp.36 = getv function %tmp.35 :pushView;
+        %tmp.37 = lgetv %menu.1;
+        symbol [ menu %tmp.37 117 25 29 ];
+        symbol [ FastGoalMenuDelegate %tmp.41 117 35 55 ];
+        %tmp.41 = getv ? :FastGoalMenuDelegate;
+        symbol [ view %tmp.43 117 56 60 ];
+        %tmp.43 = getv ? :view;
+        %tmp.38 = newc %tmp.41 (%tmp.43);
+        symbol [ WatchUi %tmp.44 117 63 70 ];
+        %tmp.44 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.45 117 71 79 ];
+        %tmp.45 = getv %tmp.44 :SLIDE_UP;
+        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38, %tmp.45);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_107_41_118_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 120; @symbol_functiondef = [confirmStopFast,120,21,36]; ]
+    private
+    function confirmStopFast() as Void {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_120_47_127_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 121 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_120_47_127_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_120_47_127_4_stop" ]
+        %dialog.1 = local;
+        symbol [ dialog %dialog.1 121 12 18 ];
+        symbol [ WatchUi %tmp.3 121 25 32 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ Confirmation %tmp.4 121 33 45 ];
+        %tmp.4 = getv function ? %tmp.3 :Confirmation;
+        %tmp.5 = "End your fast?";
+        %tmp.1 = newc %tmp.4 (%tmp.5);
+        lputv %dialog.1 %tmp.1;
+        symbol [ dialog %dialog.1 121 12 18 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 122 8 ]
+        symbol [ WatchUi %tmp.6 122 8 15 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.7 122 16 24 ];
+        %tmp.7 = getv function %tmp.6 :pushView;
+        %tmp.8 = lgetv %dialog.1;
+        symbol [ dialog %tmp.8 123 12 18 ];
+        symbol [ ConfirmStopFastDelegate %tmp.12 124 16 39 ];
+        %tmp.12 = getv ? :ConfirmStopFastDelegate;
+        symbol [ view %tmp.14 124 40 44 ];
+        %tmp.14 = getv ? :view;
+        symbol [ getFastingSession %tmp.15 124 45 62 ];
+        %tmp.15 = getv function %tmp.14 :getFastingSession;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        %tmp.9 = newc %tmp.12 (%tmp.16);
+        symbol [ WatchUi %tmp.17 125 12 19 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_IMMEDIATE %tmp.18 125 20 35 ];
+        %tmp.18 = getv %tmp.17 :SLIDE_IMMEDIATE;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.18);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_120_47_127_4_stop:
+    }
+}
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 130; @symbol_classdef = [FastGoalMenuDelegate,130,6,26]; @symbol_extends<0> = [WatchUi,130,35,42]; @symbol_extends<1> = [MenuInputDelegate,130,43,60]; ]
+class FastGoalMenuDelegate extends WatchUi.MenuInputDelegate {
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 130; ]
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 130; ]
+    static
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 131; @position = 16; @symbol_vardef = [view,131,16,20]; @symbol_type<0> = [FastTrackView,131,24,37]; ]
+    private
+    var view as FastTrackView;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 133; @symbol_functiondef = [initialize,133,13,23]; @symbol_param<0> = [fastTrackView,133,24,37]; @symbol_param<0>_type<0> = [FastTrackView,133,41,54]; ]
+    function initialize(fastTrackView as FastTrackView) as Void {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_133_56_136_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 134 8 ]
+        symbol [ MenuInputDelegate %tmp.2 134 8 25 ];
+        %tmp.2 = getv ? :MenuInputDelegate;
+        symbol [ initialize %tmp.3 134 26 36 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 135 8 ]
+        %tmp.4 = lgetv %fastTrackView;
+        symbol [ fastTrackView %tmp.4 135 15 28 ];
+        symbol [ view ? 135 8 12 ];
+        putv self :view %tmp.4;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_133_56_136_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 138; @symbol_functiondef = [onSelect,138,13,21]; @symbol_param<0> = [item,138,22,26]; ]
+    function onSelect(item) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 139 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_stop" ]
+        %itemId.1 = local;
+        symbol [ itemId %itemId.1 139 12 18 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 139 21 25 ];
+        symbol [ getId %tmp.2 139 26 31 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %itemId.1 %tmp.3;
+        symbol [ itemId %itemId.1 139 12 18 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 140 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_stop" ]
+        %fastDurationHours.2 = local;
+        symbol [ fastDurationHours %fastDurationHours.2 140 12 29 ];
+        %tmp.4 = 0;
+        lputv %fastDurationHours.2 %tmp.4;
+        symbol [ fastDurationHours %fastDurationHours.2 140 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 141 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_stop" ]
+        %selectedLabel.3 = local;
+        symbol [ selectedLabel %selectedLabel.3 141 12 25 ];
+        %tmp.5 = "";
+        lputv %selectedLabel.3 %tmp.5;
+        symbol [ selectedLabel %selectedLabel.3 141 12 25 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 143 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_stmt:
+        %tmp.6 = lgetv %itemId.1;
+        symbol [ itemId %tmp.6 143 12 18 ];
+        %tmp.8 = const :h12;
+        symbol [ h12 %tmp.8 143 23 26 const ];
+        %tmp.9 = eq %tmp.6 %tmp.8;
+        bf %tmp.9 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_28_146_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 144 12 ]
+        %tmp.10 = 12;
+        lputv %fastDurationHours.2 %tmp.10;
+        symbol [ fastDurationHours %fastDurationHours.2 144 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 145 12 ]
+        %tmp.11 = "12h (Beginner)";
+        lputv %selectedLabel.3 %tmp.11;
+        symbol [ selectedLabel %selectedLabel.3 145 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_28_146_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 146 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_stmt:
+        %tmp.12 = lgetv %itemId.1;
+        symbol [ itemId %tmp.12 146 19 25 ];
+        %tmp.14 = const :h14;
+        symbol [ h14 %tmp.14 146 30 33 const ];
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_35_149_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 147 12 ]
+        %tmp.16 = 14;
+        lputv %fastDurationHours.2 %tmp.16;
+        symbol [ fastDurationHours %fastDurationHours.2 147 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 148 12 ]
+        %tmp.17 = "14h (Fat Burn)";
+        lputv %selectedLabel.3 %tmp.17;
+        symbol [ selectedLabel %selectedLabel.3 148 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_35_149_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 149 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_stmt:
+        %tmp.18 = lgetv %itemId.1;
+        symbol [ itemId %tmp.18 149 19 25 ];
+        %tmp.20 = const :h16;
+        symbol [ h16 %tmp.20 149 30 33 const ];
+        %tmp.21 = eq %tmp.18 %tmp.20;
+        bf %tmp.21 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_35_152_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 150 12 ]
+        %tmp.22 = 16;
+        lputv %fastDurationHours.2 %tmp.22;
+        symbol [ fastDurationHours %fastDurationHours.2 150 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 151 12 ]
+        %tmp.23 = "16h (Ketosis)";
+        lputv %selectedLabel.3 %tmp.23;
+        symbol [ selectedLabel %selectedLabel.3 151 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_35_152_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 152 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_stmt:
+        %tmp.24 = lgetv %itemId.1;
+        symbol [ itemId %tmp.24 152 19 25 ];
+        %tmp.26 = const :h18;
+        symbol [ h18 %tmp.26 152 30 33 const ];
+        %tmp.27 = eq %tmp.24 %tmp.26;
+        bf %tmp.27 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_35_155_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 153 12 ]
+        %tmp.28 = 18;
+        lputv %fastDurationHours.2 %tmp.28;
+        symbol [ fastDurationHours %fastDurationHours.2 153 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 154 12 ]
+        %tmp.29 = "18h (Autophagy)";
+        lputv %selectedLabel.3 %tmp.29;
+        symbol [ selectedLabel %selectedLabel.3 154 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_35_155_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 155 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_stmt:
+        %tmp.30 = lgetv %itemId.1;
+        symbol [ itemId %tmp.30 155 19 25 ];
+        %tmp.32 = const :h20;
+        symbol [ h20 %tmp.32 155 30 33 const ];
+        %tmp.33 = eq %tmp.30 %tmp.32;
+        bf %tmp.33 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_35_158_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 156 12 ]
+        %tmp.34 = 20;
+        lputv %fastDurationHours.2 %tmp.34;
+        symbol [ fastDurationHours %fastDurationHours.2 156 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 157 12 ]
+        %tmp.35 = "20h (Deep Ketosis)";
+        lputv %selectedLabel.3 %tmp.35;
+        symbol [ selectedLabel %selectedLabel.3 157 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_35_158_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 158 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_15_161_8_if_stmt:
+        %tmp.36 = lgetv %itemId.1;
+        symbol [ itemId %tmp.36 158 19 25 ];
+        %tmp.38 = const :h24;
+        symbol [ h24 %tmp.38 158 30 33 const ];
+        %tmp.39 = eq %tmp.36 %tmp.38;
+        bf %tmp.39 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_15_161_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_35_161_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 159 12 ]
+        %tmp.40 = 24;
+        lputv %fastDurationHours.2 %tmp.40;
+        symbol [ fastDurationHours %fastDurationHours.2 159 12 29 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 160 12 ]
+        %tmp.41 = "24h (Full Day)";
+        lputv %selectedLabel.3 %tmp.41;
+        symbol [ selectedLabel %selectedLabel.3 160 12 25 ];
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_35_161_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_15_161_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_158_15_161_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_155_15_161_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_152_15_161_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_149_15_161_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_146_15_161_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_143_8_161_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 163 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_8_165_8_if_stmt:
+        %tmp.42 = lgetv %fastDurationHours.2;
+        symbol [ fastDurationHours %tmp.42 163 12 29 ];
+        %tmp.43 = 0;
+        %tmp.44 = gt %tmp.42 %tmp.43;
+        bf %tmp.44 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_8_165_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_8_165_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_35_165_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 164 12 ]
+        %tmp.45 = self;
+        symbol [ showBenefitsAndConfirm %tmp.46 164 12 34 ];
+        %tmp.46 = getv function %tmp.45 :showBenefitsAndConfirm;
+        %tmp.47 = lgetv %fastDurationHours.2;
+        symbol [ fastDurationHours %tmp.47 164 35 52 ];
+        %tmp.48 = lgetv %selectedLabel.3;
+        symbol [ selectedLabel %tmp.48 164 54 67 ];
+        invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_35_165_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_8_165_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_163_8_165_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_138_28_166_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 168; @symbol_functiondef = [showBenefitsAndConfirm,168,13,35]; @symbol_param<0> = [hours,168,36,41]; @symbol_param<1> = [label,168,43,48]; ]
+    function showBenefitsAndConfirm(hours, label) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 169 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_stop" ]
+        %benefits.1 = local;
+        symbol [ benefits %benefits.1 169 12 20 ];
+        %tmp.1 = self;
+        symbol [ getBenefitsForDuration %tmp.2 169 23 45 ];
+        %tmp.2 = getv function %tmp.1 :getBenefitsForDuration;
+        %tmp.3 = lgetv %hours;
+        symbol [ hours %tmp.3 169 46 51 ];
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %benefits.1 %tmp.4;
+        symbol [ benefits %benefits.1 169 12 20 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 170 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_stop" ]
+        %message.2 = local;
+        symbol [ message %message.2 170 12 19 ];
+        %tmp.5 = "Goal: ";
+        %tmp.6 = lgetv %label;
+        symbol [ label %tmp.6 170 33 38 ];
+        %tmp.7 = add %tmp.5 %tmp.6;
+        %tmp.8 = "\nBenefits: ";
+        %tmp.9 = add %tmp.7 %tmp.8;
+        %tmp.10 = lgetv %benefits.1;
+        symbol [ benefits %tmp.10 170 58 66 ];
+        %tmp.11 = add %tmp.9 %tmp.10;
+        %tmp.12 = "\n\nStart this fast?";
+        %tmp.13 = add %tmp.11 %tmp.12;
+        lputv %message.2 %tmp.13;
+        symbol [ message %message.2 170 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 171 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_stop" ]
+        %confirm.3 = local;
+        symbol [ confirm %confirm.3 171 12 19 ];
+        symbol [ WatchUi %tmp.16 171 26 33 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ Confirmation %tmp.17 171 34 46 ];
+        %tmp.17 = getv function ? %tmp.16 :Confirmation;
+        %tmp.18 = lgetv %message.2;
+        symbol [ message %tmp.18 171 47 54 ];
+        %tmp.14 = newc %tmp.17 (%tmp.18);
+        lputv %confirm.3 %tmp.14;
+        symbol [ confirm %confirm.3 171 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 172 8 ]
+        symbol [ WatchUi %tmp.19 172 8 15 ];
+        %tmp.19 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.20 172 16 24 ];
+        %tmp.20 = getv function %tmp.19 :pushView;
+        %tmp.21 = lgetv %confirm.3;
+        symbol [ confirm %tmp.21 172 25 32 ];
+        symbol [ StartFastConfirmationDelegate %tmp.25 172 38 67 ];
+        %tmp.25 = getv ? :StartFastConfirmationDelegate;
+        symbol [ view %tmp.27 172 68 72 ];
+        %tmp.27 = getv ? :view;
+        %tmp.28 = lgetv %hours;
+        symbol [ hours %tmp.28 172 74 79 ];
+        %tmp.22 = newc %tmp.25 (%tmp.27, %tmp.28);
+        symbol [ WatchUi %tmp.29 172 82 89 ];
+        %tmp.29 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_IMMEDIATE %tmp.30 172 90 105 ];
+        %tmp.30 = getv %tmp.29 :SLIDE_IMMEDIATE;
+        invoke %tmp.19 %tmp.20(%tmp.21, %tmp.22, %tmp.30);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_168_50_173_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 175; @symbol_functiondef = [getBenefitsForDuration,175,13,35]; @symbol_param<0> = [hours,175,36,41]; ]
+    function getBenefitsForDuration(hours) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_175_43_189_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 176 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_stmt:
+        %tmp.1 = lgetv %hours;
+        symbol [ hours %tmp.1 176 12 17 ];
+        %tmp.2 = 12;
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_25_178_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 177 12 ]
+        %tmp.4 = "Improved blood sugar and hormone balance.";
+        ret %tmp.4;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_25_178_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 178 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_stmt:
+        %tmp.5 = lgetv %hours;
+        symbol [ hours %tmp.5 178 19 24 ];
+        %tmp.6 = 14;
+        %tmp.7 = lte %tmp.5 %tmp.6;
+        bf %tmp.7 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_32_180_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 179 12 ]
+        %tmp.8 = "Fat burning increases, metabolism improves.";
+        ret %tmp.8;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_32_180_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 180 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_stmt:
+        %tmp.9 = lgetv %hours;
+        symbol [ hours %tmp.9 180 19 24 ];
+        %tmp.10 = 16;
+        %tmp.11 = lte %tmp.9 %tmp.10;
+        bf %tmp.11 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_32_182_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 181 12 ]
+        %tmp.12 = "Ketosis begins, body uses fat for fuel.";
+        ret %tmp.12;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_32_182_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 182 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_stmt:
+        %tmp.13 = lgetv %hours;
+        symbol [ hours %tmp.13 182 19 24 ];
+        %tmp.14 = 18;
+        %tmp.15 = lte %tmp.13 %tmp.14;
+        bf %tmp.15 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_32_184_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 183 12 ]
+        %tmp.16 = "Cellular cleanup (autophagy) ramps up.";
+        ret %tmp.16;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_32_184_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_false:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 184 15 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_stmt:
+        %tmp.17 = lgetv %hours;
+        symbol [ hours %tmp.17 184 19 24 ];
+        %tmp.18 = 20;
+        %tmp.19 = lte %tmp.17 %tmp.18;
+        bf %tmp.19 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_else_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_32_186_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 185 12 ]
+        %tmp.20 = "Deep ketosis, enhanced fat loss and repair.";
+        ret %tmp.20;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_32_186_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_else_false:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_186_15_188_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 187 12 ]
+        %tmp.21 = "HGH boost, deep repair, and full fat adaptation.";
+        ret %tmp.21;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_186_15_188_8_stop:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_184_15_188_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_182_15_188_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_180_15_188_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_178_15_188_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_176_8_188_8_if_end:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_175_43_189_4_stop:
+    }
+}
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 192; @symbol_classdef = [StartFastConfirmationDelegate,192,6,35]; @symbol_extends<0> = [WatchUi,192,44,51]; @symbol_extends<1> = [ConfirmationDelegate,192,52,72]; ]
+class StartFastConfirmationDelegate extends WatchUi.ConfirmationDelegate {
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 192; ]
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 192; ]
+    static
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 193; @position = 16; @symbol_vardef = [view,193,16,20]; @symbol_type<0> = [FastTrackView,193,24,37]; ]
+    private
+    var view as FastTrackView;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 194; @position = 16; @symbol_vardef = [fastDurationHours,194,16,33]; ]
+    private
+    var fastDurationHours;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 196; @symbol_functiondef = [initialize,196,13,23]; @symbol_param<0> = [fastTrackView,196,24,37]; @symbol_param<0>_type<0> = [FastTrackView,196,41,54]; @symbol_param<1> = [durationHours,196,56,69]; ]
+    function initialize(fastTrackView as FastTrackView, durationHours) as Void {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_196_71_200_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 197 8 ]
+        symbol [ ConfirmationDelegate %tmp.2 197 8 28 ];
+        %tmp.2 = getv ? :ConfirmationDelegate;
+        symbol [ initialize %tmp.3 197 29 39 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 198 8 ]
+        %tmp.4 = lgetv %fastTrackView;
+        symbol [ fastTrackView %tmp.4 198 15 28 ];
+        symbol [ view ? 198 8 12 ];
+        putv self :view %tmp.4;
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 199 8 ]
+        %tmp.5 = lgetv %durationHours;
+        symbol [ durationHours %tmp.5 199 28 41 ];
+        symbol [ fastDurationHours ? 199 8 25 ];
+        putv self :fastDurationHours %tmp.5;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_196_71_200_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 202; @symbol_functiondef = [onResponse,202,13,23]; @symbol_param<0> = [response,202,24,32]; ]
+    function onResponse(response) {
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_202_34_212_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 203 8 ]
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_stmt:
+        %tmp.1 = lgetv %response;
+        symbol [ response %tmp.1 203 12 20 ];
+        symbol [ WatchUi %tmp.2 203 24 31 ];
+        %tmp.2 = getm $.Toybox.WatchUi;
+        symbol [ CONFIRM_YES %tmp.3 203 32 43 ];
+        %tmp.3 = getv %tmp.2 :CONFIRM_YES;
+        %tmp.4 = eq %tmp.1 %tmp.3;
+        bf %tmp.4 @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_else_false;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_true:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_45_208_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 204 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_45_208_8_start" "N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_45_208_8_stop" ]
+        %fastingSession.1 = local;
+        symbol [ fastingSession %fastingSession.1 204 16 30 ];
+        symbol [ view %tmp.6 204 33 37 ];
+        %tmp.6 = getv ? :view;
+        symbol [ getFastingSession %tmp.7 204 38 55 ];
+        %tmp.7 = getv function %tmp.6 :getFastingSession;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        lputv %fastingSession.1 %tmp.8;
+        symbol [ fastingSession %fastingSession.1 204 16 30 ];
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 205 12 ]
+        %tmp.9 = lgetv %fastingSession.1;
+        symbol [ fastingSession %tmp.9 205 12 26 ];
+        symbol [ startFast %tmp.10 205 27 36 ];
+        %tmp.10 = getv function %tmp.9 :startFast;
+        symbol [ fastDurationHours %tmp.12 205 37 54 ];
+        %tmp.12 = getv ? :fastDurationHours;
+        invoke %tmp.9 %tmp.10(%tmp.12);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 206 12 ]
+        symbol [ WatchUi %tmp.13 206 12 19 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.14 206 20 27 ];
+        %tmp.14 = getv function %tmp.13 :popView;
+        symbol [ WatchUi %tmp.15 206 28 35 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.16 206 36 46 ];
+        %tmp.16 = getv %tmp.15 :SLIDE_DOWN;
+        invoke %tmp.13 %tmp.14(%tmp.16);
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 207 12 ]
+        symbol [ WatchUi %tmp.17 207 12 19 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.18 207 20 27 ];
+        %tmp.18 = getv function %tmp.17 :popView;
+        symbol [ WatchUi %tmp.19 207 28 35 ];
+        %tmp.19 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.20 207 36 46 ];
+        %tmp.20 = getv %tmp.19 :SLIDE_DOWN;
+        invoke %tmp.17 %tmp.18(%tmp.20);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_45_208_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_end;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_else_false:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_208_15_210_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 209 12 ]
+        symbol [ WatchUi %tmp.21 209 12 19 ];
+        %tmp.21 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.22 209 20 27 ];
+        %tmp.22 = getv function %tmp.21 :popView;
+        symbol [ WatchUi %tmp.23 209 28 35 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.24 209 36 46 ];
+        %tmp.24 = getv %tmp.23 :SLIDE_DOWN;
+        invoke %tmp.21 %tmp.22(%tmp.24);
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_208_15_210_8_stop:
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_203_8_210_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc" 211 8 ]
+        %tmp.25 = true;
+        ret %tmp.25;
+N_Projects_FastTrack_FastTrack_source_FastTrackDelegate_mc_202_34_212_4_stop:
+    }
+}
+[ @file = "N:\Projects\FastTrack\FastTrack\source\FastTrackDelegate.mc"; @line = 1; ]
+<init> {
+}

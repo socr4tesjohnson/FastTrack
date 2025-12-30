@@ -1,0 +1,17 @@
+<drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <bitmap id="LauncherIcon" filename="fasting_icon_40x40.png">
+        <palette>
+            <color>000000</color>
+            <color>FFFFFF</color>
+            <color>00AA00</color>
+        </palette>
+    </bitmap>
+    <bitmap id="monkey" filename="monkey.png">
+        <palette>
+            <color>FF0000</color>
+            <color>000000</color>
+            <color>FFFFFF</color>
+            <color>00AAFF</color>
+        </palette>
+    </bitmap>
+</drawables>

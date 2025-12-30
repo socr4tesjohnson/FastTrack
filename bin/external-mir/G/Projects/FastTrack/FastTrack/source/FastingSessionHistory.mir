@@ -1,0 +1,913 @@
+[ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Application,3,14,25]; @symbol_importdef<2> = [Storage,3,26,33]; ]
+import Toybox.Application.Storage;
+[ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
+import Toybox.Time;
+[ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 6; @symbol_classdef = [FastingSessionHistory,6,6,27]; ]
+class FastingSessionHistory {
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 8; @symbol_functiondef = [addCompletedSession,8,20,39]; @symbol_param<0> = [startEpochSec,8,40,53]; @symbol_param<0>_type<0> = [Toybox,8,57,63]; @symbol_param<0>_type<1> = [Lang,8,64,68]; @symbol_param<0>_type<2> = [Number,8,69,75]; @symbol_param<1> = [endEpochSec,8,77,88]; @symbol_param<1>_type<0> = [Toybox,8,92,98]; @symbol_param<1>_type<1> = [Lang,8,99,103]; @symbol_param<1>_type<2> = [Number,8,104,110]; @symbol_param<2> = [stats,8,112,117]; @symbol_param<2>_type<0> = [Toybox,8,121,127]; @symbol_param<2>_type<1> = [Lang,8,128,132]; @symbol_param<2>_type<2> = [Dictionary,8,133,143]; @symbol_param<3> = [aiSummary,8,145,154]; @symbol_param<3>_type<0> = [Toybox,8,158,164]; @symbol_param<3>_type<1> = [Lang,8,165,169]; @symbol_param<3>_type<2> = [String,8,170,176]; @symbol_param<4> = [goalHours,8,179,188]; @symbol_param<4>_type<0> = [Toybox,8,192,198]; @symbol_param<4>_type<1> = [Lang,8,199,203]; @symbol_param<4>_type<2> = [Number,8,204,210]; @symbol_param<5> = [milestonesAchieved,8,213,231]; @symbol_param<5>_type<0> = [Toybox,8,235,241]; @symbol_param<5>_type<1> = [Lang,8,242,246]; @symbol_param<5>_type<2> = [Number,8,247,253]; ]
+    static
+    function addCompletedSession(startEpochSec as Toybox.Lang.Number, endEpochSec as Toybox.Lang.Number, stats as Toybox.Lang.Dictionary, aiSummary as Toybox.Lang.String or Null, goalHours as Toybox.Lang.Number or Null, milestonesAchieved as Toybox.Lang.Number or Null) {
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 9 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %history.1 = local;
+        symbol [ history %history.1 9 12 19 ];
+        symbol [ Storage %tmp.1 9 22 29 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 9 30 38 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = "fastSessionHistory";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %history.1 %tmp.4;
+        symbol [ history %history.1 9 12 19 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 10 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_8_12_8_if_stmt:
+        %tmp.5 = lgetv %history.1;
+        symbol [ history %tmp.5 10 14 21 ];
+        symbol [ Toybox %tmp.7 10 33 39 ];
+        %tmp.7 = getv ? :Toybox;
+        symbol [ Lang %tmp.8 10 40 44 ];
+        %tmp.8 = getv %tmp.7 :Lang;
+        symbol [ Array %tmp.9 10 45 50 ];
+        %tmp.9 = getv %tmp.8 :Array;
+        %tmp.10 = isa %tmp.5 %tmp.9;
+        %tmp.11 = not %tmp.10;
+        bf %tmp.11 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_8_12_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_8_12_8_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_53_12_8_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 11 12 ]
+        %tmp.12 = newa 0;
+        lputv %history.1 %tmp.12;
+        symbol [ history %history.1 11 12 19 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_53_12_8_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_8_12_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_10_8_12_8_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 13 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %durationHours.2 = local;
+        symbol [ durationHours %durationHours.2 13 12 25 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_begin:
+        %tmp.13 = lgetv %stats;
+        symbol [ stats %tmp.13 13 28 33 ];
+        %tmp.14 = null;
+        %tmp.15 = ne %tmp.13 %tmp.14;
+        bf %tmp.15 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_true:
+        %tmp.16 = lgetv %stats;
+        symbol [ stats %tmp.16 13 44 49 ];
+        %tmp.17 = as %tmp.16 { (!Null) };
+        symbol [ get %tmp.18 13 50 53 ];
+        %tmp.18 = getv function %tmp.17 :get;
+        %tmp.19 = "durationHours";
+        %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
+        push %tmp.20;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_else_false:
+        %tmp.21 = null;
+        push %tmp.21;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_end:
+        %tmp.22 = phi [%tmp.15 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_begin] [%tmp.20 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_true] [%tmp.21 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_else_false] [%tmp.22 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_13_28_13_73_end];
+        lputv %durationHours.2 %tmp.22;
+        symbol [ durationHours %durationHours.2 13 12 25 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 14 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %avgHeartRate.3 = local;
+        symbol [ avgHeartRate %avgHeartRate.3 14 12 24 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_begin:
+        %tmp.23 = lgetv %stats;
+        symbol [ stats %tmp.23 14 27 32 ];
+        %tmp.24 = null;
+        %tmp.25 = ne %tmp.23 %tmp.24;
+        bf %tmp.25 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_true:
+        %tmp.26 = lgetv %stats;
+        symbol [ stats %tmp.26 14 43 48 ];
+        %tmp.27 = as %tmp.26 { (!Null) };
+        symbol [ get %tmp.28 14 49 52 ];
+        %tmp.28 = getv function %tmp.27 :get;
+        %tmp.29 = "avgHeartRate";
+        %tmp.30 = invoke %tmp.27 %tmp.28(%tmp.29);
+        push %tmp.30;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_else_false:
+        %tmp.31 = null;
+        push %tmp.31;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_end:
+        %tmp.32 = phi [%tmp.25 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_begin] [%tmp.30 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_true] [%tmp.31 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_else_false] [%tmp.32 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_14_27_14_71_end];
+        lputv %avgHeartRate.3 %tmp.32;
+        symbol [ avgHeartRate %avgHeartRate.3 14 12 24 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 15 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %avgStress.4 = local;
+        symbol [ avgStress %avgStress.4 15 12 21 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_begin:
+        %tmp.33 = lgetv %stats;
+        symbol [ stats %tmp.33 15 24 29 ];
+        %tmp.34 = null;
+        %tmp.35 = ne %tmp.33 %tmp.34;
+        bf %tmp.35 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_true:
+        %tmp.36 = lgetv %stats;
+        symbol [ stats %tmp.36 15 40 45 ];
+        %tmp.37 = as %tmp.36 { (!Null) };
+        symbol [ get %tmp.38 15 46 49 ];
+        %tmp.38 = getv function %tmp.37 :get;
+        %tmp.39 = "avgStress";
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        push %tmp.40;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_else_false:
+        %tmp.41 = null;
+        push %tmp.41;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_end:
+        %tmp.42 = phi [%tmp.35 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_begin] [%tmp.40 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_true] [%tmp.41 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_else_false] [%tmp.42 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_15_24_15_65_end];
+        lputv %avgStress.4 %tmp.42;
+        symbol [ avgStress %avgStress.4 15 12 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 17 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %hrMin.5 = local;
+        symbol [ hrMin %hrMin.5 17 12 17 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_begin:
+        %tmp.43 = lgetv %stats;
+        symbol [ stats %tmp.43 17 20 25 ];
+        %tmp.44 = null;
+        %tmp.45 = ne %tmp.43 %tmp.44;
+        bf %tmp.45 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_true:
+        %tmp.46 = lgetv %stats;
+        symbol [ stats %tmp.46 17 36 41 ];
+        %tmp.47 = as %tmp.46 { (!Null) };
+        symbol [ get %tmp.48 17 42 45 ];
+        %tmp.48 = getv function %tmp.47 :get;
+        %tmp.49 = "hrMin";
+        %tmp.50 = invoke %tmp.47 %tmp.48(%tmp.49);
+        push %tmp.50;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_else_false:
+        %tmp.51 = null;
+        push %tmp.51;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_end:
+        %tmp.52 = phi [%tmp.45 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_begin] [%tmp.50 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_true] [%tmp.51 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_else_false] [%tmp.52 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_17_20_17_57_end];
+        lputv %hrMin.5 %tmp.52;
+        symbol [ hrMin %hrMin.5 17 12 17 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 18 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %hrMax.6 = local;
+        symbol [ hrMax %hrMax.6 18 12 17 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_begin:
+        %tmp.53 = lgetv %stats;
+        symbol [ stats %tmp.53 18 20 25 ];
+        %tmp.54 = null;
+        %tmp.55 = ne %tmp.53 %tmp.54;
+        bf %tmp.55 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_true:
+        %tmp.56 = lgetv %stats;
+        symbol [ stats %tmp.56 18 36 41 ];
+        %tmp.57 = as %tmp.56 { (!Null) };
+        symbol [ get %tmp.58 18 42 45 ];
+        %tmp.58 = getv function %tmp.57 :get;
+        %tmp.59 = "hrMax";
+        %tmp.60 = invoke %tmp.57 %tmp.58(%tmp.59);
+        push %tmp.60;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_else_false:
+        %tmp.61 = null;
+        push %tmp.61;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_end:
+        %tmp.62 = phi [%tmp.55 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_begin] [%tmp.60 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_true] [%tmp.61 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_else_false] [%tmp.62 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_18_20_18_57_end];
+        lputv %hrMax.6 %tmp.62;
+        symbol [ hrMax %hrMax.6 18 12 17 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 19 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %stressMin.7 = local;
+        symbol [ stressMin %stressMin.7 19 12 21 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_begin:
+        %tmp.63 = lgetv %stats;
+        symbol [ stats %tmp.63 19 24 29 ];
+        %tmp.64 = null;
+        %tmp.65 = ne %tmp.63 %tmp.64;
+        bf %tmp.65 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_true:
+        %tmp.66 = lgetv %stats;
+        symbol [ stats %tmp.66 19 40 45 ];
+        %tmp.67 = as %tmp.66 { (!Null) };
+        symbol [ get %tmp.68 19 46 49 ];
+        %tmp.68 = getv function %tmp.67 :get;
+        %tmp.69 = "stressMin";
+        %tmp.70 = invoke %tmp.67 %tmp.68(%tmp.69);
+        push %tmp.70;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_else_false:
+        %tmp.71 = null;
+        push %tmp.71;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_end:
+        %tmp.72 = phi [%tmp.65 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_begin] [%tmp.70 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_true] [%tmp.71 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_else_false] [%tmp.72 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_19_24_19_65_end];
+        lputv %stressMin.7 %tmp.72;
+        symbol [ stressMin %stressMin.7 19 12 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 20 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %stressMax.8 = local;
+        symbol [ stressMax %stressMax.8 20 12 21 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_begin:
+        %tmp.73 = lgetv %stats;
+        symbol [ stats %tmp.73 20 24 29 ];
+        %tmp.74 = null;
+        %tmp.75 = ne %tmp.73 %tmp.74;
+        bf %tmp.75 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_true:
+        %tmp.76 = lgetv %stats;
+        symbol [ stats %tmp.76 20 40 45 ];
+        %tmp.77 = as %tmp.76 { (!Null) };
+        symbol [ get %tmp.78 20 46 49 ];
+        %tmp.78 = getv function %tmp.77 :get;
+        %tmp.79 = "stressMax";
+        %tmp.80 = invoke %tmp.77 %tmp.78(%tmp.79);
+        push %tmp.80;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_else_false:
+        %tmp.81 = null;
+        push %tmp.81;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_end:
+        %tmp.82 = phi [%tmp.75 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_begin] [%tmp.80 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_true] [%tmp.81 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_else_false] [%tmp.82 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_20_24_20_65_end];
+        lputv %stressMax.8 %tmp.82;
+        symbol [ stressMax %stressMax.8 20 12 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 21 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %hrSamples.9 = local;
+        symbol [ hrSamples %hrSamples.9 21 12 21 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_begin:
+        %tmp.83 = lgetv %stats;
+        symbol [ stats %tmp.83 21 24 29 ];
+        %tmp.84 = null;
+        %tmp.85 = ne %tmp.83 %tmp.84;
+        bf %tmp.85 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_true:
+        %tmp.86 = lgetv %stats;
+        symbol [ stats %tmp.86 21 40 45 ];
+        %tmp.87 = as %tmp.86 { (!Null) };
+        symbol [ get %tmp.88 21 46 49 ];
+        %tmp.88 = getv function %tmp.87 :get;
+        %tmp.89 = "hrSamples";
+        %tmp.90 = invoke %tmp.87 %tmp.88(%tmp.89);
+        push %tmp.90;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_else_false:
+        %tmp.91 = null;
+        push %tmp.91;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_end:
+        %tmp.92 = phi [%tmp.85 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_begin] [%tmp.90 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_true] [%tmp.91 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_else_false] [%tmp.92 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_21_24_21_65_end];
+        lputv %hrSamples.9 %tmp.92;
+        symbol [ hrSamples %hrSamples.9 21 12 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 22 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %stressSamples.10 = local;
+        symbol [ stressSamples %stressSamples.10 22 12 25 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_begin:
+        %tmp.93 = lgetv %stats;
+        symbol [ stats %tmp.93 22 28 33 ];
+        %tmp.94 = null;
+        %tmp.95 = ne %tmp.93 %tmp.94;
+        bf %tmp.95 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_else_false;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_true:
+        %tmp.96 = lgetv %stats;
+        symbol [ stats %tmp.96 22 44 49 ];
+        %tmp.97 = as %tmp.96 { (!Null) };
+        symbol [ get %tmp.98 22 50 53 ];
+        %tmp.98 = getv function %tmp.97 :get;
+        %tmp.99 = "stressSamples";
+        %tmp.100 = invoke %tmp.97 %tmp.98(%tmp.99);
+        push %tmp.100;
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_else_false:
+        %tmp.101 = null;
+        push %tmp.101;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_end:
+        %tmp.102 = phi [%tmp.95 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_begin] [%tmp.100 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_true] [%tmp.101 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_else_false] [%tmp.102 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_22_28_22_73_end];
+        lputv %stressSamples.10 %tmp.102;
+        symbol [ stressSamples %stressSamples.10 22 12 25 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 23 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop" ]
+        %entry.11 = local;
+        symbol [ entry %entry.11 23 12 17 ];
+        %tmp.103 = newd 12;
+        %tmp.104 = "startedAt";
+        %tmp.105 = lgetv %startEpochSec;
+        symbol [ startEpochSec %tmp.105 24 27 40 ];
+        %tmp.106 = dup %tmp.103;
+        %tmp.107 = aputv %tmp.106 %tmp.104 %tmp.105;
+        %tmp.108 = "endedAt";
+        %tmp.109 = lgetv %endEpochSec;
+        symbol [ endEpochSec %tmp.109 25 25 36 ];
+        %tmp.110 = dup %tmp.107;
+        %tmp.111 = aputv %tmp.110 %tmp.108 %tmp.109;
+        %tmp.112 = "durationHours";
+        %tmp.113 = lgetv %durationHours.2;
+        symbol [ durationHours %tmp.113 26 31 44 ];
+        %tmp.114 = dup %tmp.111;
+        %tmp.115 = aputv %tmp.114 %tmp.112 %tmp.113;
+        %tmp.116 = "avgHeartRate";
+        %tmp.117 = lgetv %avgHeartRate.3;
+        symbol [ avgHeartRate %tmp.117 27 30 42 ];
+        %tmp.118 = dup %tmp.115;
+        %tmp.119 = aputv %tmp.118 %tmp.116 %tmp.117;
+        %tmp.120 = "avgStress";
+        %tmp.121 = lgetv %avgStress.4;
+        symbol [ avgStress %tmp.121 28 27 36 ];
+        %tmp.122 = dup %tmp.119;
+        %tmp.123 = aputv %tmp.122 %tmp.120 %tmp.121;
+        %tmp.124 = "hrMin";
+        %tmp.125 = lgetv %hrMin.5;
+        symbol [ hrMin %tmp.125 30 23 28 ];
+        %tmp.126 = dup %tmp.123;
+        %tmp.127 = aputv %tmp.126 %tmp.124 %tmp.125;
+        %tmp.128 = "hrMax";
+        %tmp.129 = lgetv %hrMax.6;
+        symbol [ hrMax %tmp.129 31 23 28 ];
+        %tmp.130 = dup %tmp.127;
+        %tmp.131 = aputv %tmp.130 %tmp.128 %tmp.129;
+        %tmp.132 = "stressMin";
+        %tmp.133 = lgetv %stressMin.7;
+        symbol [ stressMin %tmp.133 32 27 36 ];
+        %tmp.134 = dup %tmp.131;
+        %tmp.135 = aputv %tmp.134 %tmp.132 %tmp.133;
+        %tmp.136 = "stressMax";
+        %tmp.137 = lgetv %stressMax.8;
+        symbol [ stressMax %tmp.137 33 27 36 ];
+        %tmp.138 = dup %tmp.135;
+        %tmp.139 = aputv %tmp.138 %tmp.136 %tmp.137;
+        %tmp.140 = "hrSamples";
+        %tmp.141 = lgetv %hrSamples.9;
+        symbol [ hrSamples %tmp.141 34 27 36 ];
+        %tmp.142 = dup %tmp.139;
+        %tmp.143 = aputv %tmp.142 %tmp.140 %tmp.141;
+        %tmp.144 = "stressSamples";
+        %tmp.145 = lgetv %stressSamples.10;
+        symbol [ stressSamples %tmp.145 35 31 44 ];
+        %tmp.146 = dup %tmp.143;
+        %tmp.147 = aputv %tmp.146 %tmp.144 %tmp.145;
+        %tmp.148 = "aiSummary";
+        %tmp.149 = lgetv %aiSummary;
+        symbol [ aiSummary %tmp.149 36 27 36 ];
+        %tmp.150 = dup %tmp.147;
+        %tmp.151 = aputv %tmp.150 %tmp.148 %tmp.149;
+        lputv %entry.11 %tmp.151;
+        symbol [ entry %entry.11 23 12 17 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 38 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_8_38_68_if_stmt:
+        %tmp.152 = lgetv %goalHours;
+        symbol [ goalHours %tmp.152 38 12 21 ];
+        %tmp.153 = null;
+        %tmp.154 = ne %tmp.152 %tmp.153;
+        bf %tmp.154 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_8_38_68_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_8_38_68_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_31_38_68_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 38 33 ]
+        %tmp.155 = lgetv %entry.11;
+        symbol [ entry %tmp.155 38 33 38 ];
+        symbol [ put %tmp.156 38 39 42 ];
+        %tmp.156 = getv function %tmp.155 :put;
+        %tmp.157 = "goalHours";
+        %tmp.158 = lgetv %goalHours;
+        symbol [ goalHours %tmp.158 38 56 65 ];
+        %tmp.159 = as %tmp.158 { (!Null) };
+        invoke %tmp.155 %tmp.156(%tmp.157, %tmp.159);
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_31_38_68_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_8_38_68_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_38_8_38_68_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 39 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_8_39_95_if_stmt:
+        %tmp.160 = lgetv %milestonesAchieved;
+        symbol [ milestonesAchieved %tmp.160 39 12 30 ];
+        %tmp.161 = null;
+        %tmp.162 = ne %tmp.160 %tmp.161;
+        bf %tmp.162 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_8_39_95_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_8_39_95_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_40_39_95_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 39 42 ]
+        %tmp.163 = lgetv %entry.11;
+        symbol [ entry %tmp.163 39 42 47 ];
+        symbol [ put %tmp.164 39 48 51 ];
+        %tmp.164 = getv function %tmp.163 :put;
+        %tmp.165 = "milestonesAchieved";
+        %tmp.166 = lgetv %milestonesAchieved;
+        symbol [ milestonesAchieved %tmp.166 39 74 92 ];
+        %tmp.167 = as %tmp.166 { (!Null) };
+        invoke %tmp.163 %tmp.164(%tmp.165, %tmp.167);
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_40_39_95_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_8_39_95_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_39_8_39_95_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 41 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_8_41_73_if_stmt:
+        %tmp.168 = lgetv %entry.11;
+        symbol [ entry %tmp.168 41 13 18 ];
+        symbol [ hasKey %tmp.169 41 19 25 ];
+        %tmp.169 = getv function %tmp.168 :hasKey;
+        %tmp.170 = "aiPending";
+        %tmp.171 = invoke %tmp.168 %tmp.169(%tmp.170);
+        %tmp.172 = not %tmp.171;
+        bf %tmp.172 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_8_41_73_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_8_41_73_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_40_41_73_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 41 42 ]
+        %tmp.173 = lgetv %entry.11;
+        symbol [ entry %tmp.173 41 42 47 ];
+        symbol [ put %tmp.174 41 48 51 ];
+        %tmp.174 = getv function %tmp.173 :put;
+        %tmp.175 = "aiPending";
+        %tmp.176 = false;
+        invoke %tmp.173 %tmp.174(%tmp.175, %tmp.176);
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_40_41_73_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_8_41_73_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_41_8_41_73_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 42 8 ]
+        %tmp.177 = lgetv %history.1;
+        symbol [ history %tmp.177 42 8 15 ];
+        symbol [ add %tmp.178 42 16 19 ];
+        %tmp.178 = getv function %tmp.177 :add;
+        %tmp.179 = lgetv %entry.11;
+        symbol [ entry %tmp.179 42 20 25 ];
+        invoke %tmp.177 %tmp.178(%tmp.179);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 44 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_8_46_8_if_stmt:
+        %tmp.180 = lgetv %history.1;
+        symbol [ history %tmp.180 44 12 19 ];
+        symbol [ size %tmp.181 44 20 24 ];
+        %tmp.181 = getv function %tmp.180 :size;
+        %tmp.182 = invoke %tmp.180 %tmp.181();
+        %tmp.183 = 20;
+        %tmp.184 = gt %tmp.182 %tmp.183;
+        bf %tmp.184 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_8_46_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_8_46_8_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_33_46_8_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 45 12 ]
+        %tmp.185 = lgetv %history.1;
+        symbol [ history %tmp.185 45 22 29 ];
+        symbol [ slice %tmp.186 45 30 35 ];
+        %tmp.186 = getv function %tmp.185 :slice;
+        %tmp.187 = lgetv %history.1;
+        symbol [ history %tmp.187 45 36 43 ];
+        symbol [ size %tmp.188 45 44 48 ];
+        %tmp.188 = getv function %tmp.187 :size;
+        %tmp.189 = invoke %tmp.187 %tmp.188();
+        %tmp.190 = 20;
+        %tmp.191 = sub %tmp.189 %tmp.190;
+        %tmp.192 = null;
+        %tmp.193 = invoke %tmp.185 %tmp.186(%tmp.191, %tmp.192);
+        lputv %history.1 %tmp.193;
+        symbol [ history %history.1 45 12 19 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_33_46_8_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_8_46_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_44_8_46_8_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 47 8 ]
+        symbol [ Storage %tmp.194 47 8 15 ];
+        %tmp.194 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.195 47 16 24 ];
+        %tmp.195 = getv function %tmp.194 :setValue;
+        %tmp.196 = "fastSessionHistory";
+        %tmp.197 = lgetv %history.1;
+        symbol [ history %tmp.197 47 47 54 ];
+        invoke %tmp.194 %tmp.195(%tmp.196, %tmp.197);
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_8_256_48_4_stop:
+    }
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 51; @symbol_functiondef = [updateAiSummaryForSession,51,20,45]; @symbol_param<0> = [startEpochSec,51,46,59]; @symbol_param<0>_type<0> = [Toybox,51,63,69]; @symbol_param<0>_type<1> = [Lang,51,70,74]; @symbol_param<0>_type<2> = [Number,51,75,81]; @symbol_param<1> = [endEpochSec,51,83,94]; @symbol_param<1>_type<0> = [Toybox,51,98,104]; @symbol_param<1>_type<1> = [Lang,51,105,109]; @symbol_param<1>_type<2> = [Number,51,110,116]; @symbol_param<2> = [aiSummary,51,118,127]; @symbol_param<2>_type<0> = [Toybox,51,131,137]; @symbol_param<2>_type<1> = [Lang,51,138,142]; @symbol_param<2>_type<2> = [String,51,143,149]; ]
+    static
+    function updateAiSummaryForSession(startEpochSec as Toybox.Lang.Number, endEpochSec as Toybox.Lang.Number, aiSummary as Toybox.Lang.String) as Void {
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 52 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_stop" ]
+        %history.1 = local;
+        symbol [ history %history.1 52 12 19 ];
+        symbol [ Storage %tmp.1 52 22 29 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 52 30 38 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = "fastSessionHistory";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %history.1 %tmp.4;
+        symbol [ history %history.1 52 12 19 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 53 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_8_53_63_if_stmt:
+        %tmp.5 = lgetv %history.1;
+        symbol [ history %tmp.5 53 14 21 ];
+        symbol [ Toybox %tmp.7 53 33 39 ];
+        %tmp.7 = getv ? :Toybox;
+        symbol [ Lang %tmp.8 53 40 44 ];
+        %tmp.8 = getv %tmp.7 :Lang;
+        symbol [ Array %tmp.9 53 45 50 ];
+        %tmp.9 = getv %tmp.8 :Array;
+        %tmp.10 = isa %tmp.5 %tmp.9;
+        %tmp.11 = not %tmp.10;
+        bf %tmp.11 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_8_53_63_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_8_53_63_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_53_53_63_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 53 55 ]
+        ret ?;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_53_53_63_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_8_53_63_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_53_8_53_63_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 54 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_stop" ]
+        %arr.2 = local;
+        symbol [ arr %arr.2 54 12 15 ];
+        %tmp.12 = lgetv %history.1;
+        symbol [ history %tmp.12 54 18 25 ];
+        %tmp.13 = as %tmp.12 Toybox.Lang.Array;
+        symbol [ Toybox %tmp.13 54 29 35 ];
+        symbol [ Lang %tmp.13 54 36 40 ];
+        symbol [ Array %tmp.13 54 41 46 ];
+        lputv %arr.2 %tmp.13;
+        symbol [ arr %arr.2 54 12 15 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 55 8 ]
+        for @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_test @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_incr @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_init:
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_begin" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 55 17 18 ];
+        %tmp.14 = 0;
+        lputv %i.3 %tmp.14;
+        symbol [ i %i.3 55 17 18 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_test:
+        %tmp.15 = lgetv %i.3;
+        symbol [ i %tmp.15 55 24 25 ];
+        %tmp.16 = lgetv %arr.2;
+        symbol [ arr %tmp.16 55 28 31 ];
+        symbol [ size %tmp.17 55 32 36 ];
+        %tmp.17 = getv function %tmp.16 :size;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        %tmp.19 = lt %tmp.15 %tmp.18;
+        bf %tmp.19 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_begin:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_45_68_8_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 56 12 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_45_68_8_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_45_68_8_stop" ]
+        %eObj.4 = local;
+        symbol [ eObj %eObj.4 56 16 20 ];
+        %tmp.20 = lgetv %arr.2;
+        symbol [ arr %tmp.20 56 23 26 ];
+        %tmp.21 = lgetv %i.3;
+        symbol [ i %tmp.21 56 27 28 ];
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        lputv %eObj.4 %tmp.22;
+        symbol [ eObj %eObj.4 56 16 20 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 57 12 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_12_67_12_if_stmt:
+        %tmp.23 = lgetv %eObj.4;
+        symbol [ eObj %tmp.23 57 16 20 ];
+        symbol [ Toybox %tmp.25 57 32 38 ];
+        %tmp.25 = getv ? :Toybox;
+        symbol [ Lang %tmp.26 57 39 43 ];
+        %tmp.26 = getv %tmp.25 :Lang;
+        symbol [ Dictionary %tmp.27 57 44 54 ];
+        %tmp.27 = getv %tmp.26 :Dictionary;
+        %tmp.28 = isa %tmp.23 %tmp.27;
+        bf %tmp.28 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_12_67_12_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_12_67_12_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 58 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_stop" ]
+        %e.5 = local;
+        symbol [ e %e.5 58 20 21 ];
+        %tmp.29 = lgetv %eObj.4;
+        symbol [ eObj %tmp.29 58 24 28 ];
+        %tmp.30 = as %tmp.29 { (Toybox.Lang.Dictionary) };
+        %tmp.31 = as %tmp.30 Toybox.Lang.Dictionary;
+        symbol [ Toybox %tmp.31 58 32 38 ];
+        symbol [ Lang %tmp.31 58 39 43 ];
+        symbol [ Dictionary %tmp.31 58 44 54 ];
+        lputv %e.5 %tmp.31;
+        symbol [ e %e.5 58 20 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 59 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_stop" ]
+        %s.6 = local;
+        symbol [ s %s.6 59 20 21 ];
+        %tmp.32 = lgetv %e.5;
+        symbol [ e %tmp.32 59 24 25 ];
+        symbol [ get %tmp.33 59 26 29 ];
+        %tmp.33 = getv function %tmp.32 :get;
+        %tmp.34 = "startedAt";
+        %tmp.35 = invoke %tmp.32 %tmp.33(%tmp.34);
+        lputv %s.6 %tmp.35;
+        symbol [ s %s.6 59 20 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 60 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_stop" ]
+        %en.7 = local;
+        symbol [ en %en.7 60 20 22 ];
+        %tmp.36 = lgetv %e.5;
+        symbol [ e %tmp.36 60 25 26 ];
+        symbol [ get %tmp.37 60 27 30 ];
+        %tmp.37 = getv function %tmp.36 :get;
+        %tmp.38 = "endedAt";
+        %tmp.39 = invoke %tmp.36 %tmp.37(%tmp.38);
+        lputv %en.7 %tmp.39;
+        symbol [ en %en.7 60 20 22 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 61 16 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_stmt:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_20_61_48_begin:
+        %tmp.40 = lgetv %s.6;
+        symbol [ s %tmp.40 61 20 21 ];
+        %tmp.41 = lgetv %startEpochSec;
+        symbol [ startEpochSec %tmp.41 61 25 38 ];
+        %tmp.42 = eq %tmp.40 %tmp.41;
+        bf %tmp.42 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_42_61_48_true:
+        %tmp.43 = lgetv %en.7;
+        symbol [ en %tmp.43 61 42 44 ];
+        %tmp.44 = lgetv %endEpochSec;
+        symbol [ endEpochSec %tmp.44 61 48 59 ];
+        %tmp.45 = eq %tmp.43 %tmp.44;
+        push %tmp.45;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_42_61_48_end:
+        %tmp.46 = phi [%tmp.42 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_20_61_48_begin] [%tmp.45 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_42_61_48_true] [%tmp.46 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_42_61_48_end];
+        bf %tmp.46 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_61_66_16_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 62 20 ]
+        %tmp.47 = lgetv %e.5;
+        symbol [ e %tmp.47 62 20 21 ];
+        symbol [ put %tmp.48 62 22 25 ];
+        %tmp.48 = getv function %tmp.47 :put;
+        %tmp.49 = "aiSummary";
+        %tmp.50 = lgetv %aiSummary;
+        symbol [ aiSummary %tmp.50 62 39 48 ];
+        invoke %tmp.47 %tmp.48(%tmp.49, %tmp.50);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 63 20 ]
+        %tmp.51 = lgetv %e.5;
+        symbol [ e %tmp.51 63 20 21 ];
+        symbol [ put %tmp.52 63 22 25 ];
+        %tmp.52 = getv function %tmp.51 :put;
+        %tmp.53 = "aiPending";
+        %tmp.54 = false;
+        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.54);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 64 20 ]
+        symbol [ Storage %tmp.55 64 20 27 ];
+        %tmp.55 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.56 64 28 36 ];
+        %tmp.56 = getv function %tmp.55 :setValue;
+        %tmp.57 = "fastSessionHistory";
+        %tmp.58 = lgetv %arr.2;
+        symbol [ arr %tmp.58 64 59 62 ];
+        invoke %tmp.55 %tmp.56(%tmp.57, %tmp.58);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 65 20 ]
+        ret ?;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_61_66_16_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_61_16_66_16_if_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_56_67_12_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_12_67_12_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_57_12_67_12_if_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_45_68_8_stop:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_incr:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 55 ]
+        %tmp.61 = lgetv %i.3;
+        symbol [ i %tmp.61 55 40 41 ];
+        %tmp.62 = add %tmp.61 1;
+        lputv %i.3 %tmp.62;
+        symbol [ i %i.3 55 40 41 ];
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_test;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_55_8_68_8_for_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_51_159_69_4_stop:
+    }
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 71; @symbol_functiondef = [setAiPendingForSession,71,20,42]; @symbol_param<0> = [startEpochSec,71,43,56]; @symbol_param<0>_type<0> = [Toybox,71,60,66]; @symbol_param<0>_type<1> = [Lang,71,67,71]; @symbol_param<0>_type<2> = [Number,71,72,78]; @symbol_param<1> = [endEpochSec,71,80,91]; @symbol_param<1>_type<0> = [Toybox,71,95,101]; @symbol_param<1>_type<1> = [Lang,71,102,106]; @symbol_param<1>_type<2> = [Number,71,107,113]; @symbol_param<2> = [pending,71,115,122]; @symbol_param<2>_type<0> = [Toybox,71,126,132]; @symbol_param<2>_type<1> = [Lang,71,133,137]; @symbol_param<2>_type<2> = [Boolean,71,138,145]; ]
+    static
+    function setAiPendingForSession(startEpochSec as Toybox.Lang.Number, endEpochSec as Toybox.Lang.Number, pending as Toybox.Lang.Boolean) as Void {
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 72 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_stop" ]
+        %history.1 = local;
+        symbol [ history %history.1 72 12 19 ];
+        symbol [ Storage %tmp.1 72 22 29 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 72 30 38 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = "fastSessionHistory";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %history.1 %tmp.4;
+        symbol [ history %history.1 72 12 19 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 73 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_8_73_63_if_stmt:
+        %tmp.5 = lgetv %history.1;
+        symbol [ history %tmp.5 73 14 21 ];
+        symbol [ Toybox %tmp.7 73 33 39 ];
+        %tmp.7 = getv ? :Toybox;
+        symbol [ Lang %tmp.8 73 40 44 ];
+        %tmp.8 = getv %tmp.7 :Lang;
+        symbol [ Array %tmp.9 73 45 50 ];
+        %tmp.9 = getv %tmp.8 :Array;
+        %tmp.10 = isa %tmp.5 %tmp.9;
+        %tmp.11 = not %tmp.10;
+        bf %tmp.11 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_8_73_63_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_8_73_63_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_53_73_63_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 73 55 ]
+        ret ?;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_53_73_63_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_8_73_63_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_73_8_73_63_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 74 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_stop" ]
+        %arr.2 = local;
+        symbol [ arr %arr.2 74 12 15 ];
+        %tmp.12 = lgetv %history.1;
+        symbol [ history %tmp.12 74 18 25 ];
+        %tmp.13 = as %tmp.12 Toybox.Lang.Array;
+        symbol [ Toybox %tmp.13 74 29 35 ];
+        symbol [ Lang %tmp.13 74 36 40 ];
+        symbol [ Array %tmp.13 74 41 46 ];
+        lputv %arr.2 %tmp.13;
+        symbol [ arr %arr.2 74 12 15 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 75 8 ]
+        for @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_test @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_incr @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_init:
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_begin" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 75 17 18 ];
+        %tmp.14 = 0;
+        lputv %i.3 %tmp.14;
+        symbol [ i %i.3 75 17 18 ];
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_test:
+        %tmp.15 = lgetv %i.3;
+        symbol [ i %tmp.15 75 24 25 ];
+        %tmp.16 = lgetv %arr.2;
+        symbol [ arr %tmp.16 75 28 31 ];
+        symbol [ size %tmp.17 75 32 36 ];
+        %tmp.17 = getv function %tmp.16 :size;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        %tmp.19 = lt %tmp.15 %tmp.18;
+        bf %tmp.19 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_begin:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_45_87_8_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 76 12 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_45_87_8_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_45_87_8_stop" ]
+        %eObj.4 = local;
+        symbol [ eObj %eObj.4 76 16 20 ];
+        %tmp.20 = lgetv %arr.2;
+        symbol [ arr %tmp.20 76 23 26 ];
+        %tmp.21 = lgetv %i.3;
+        symbol [ i %tmp.21 76 27 28 ];
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        lputv %eObj.4 %tmp.22;
+        symbol [ eObj %eObj.4 76 16 20 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 77 12 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_12_86_12_if_stmt:
+        %tmp.23 = lgetv %eObj.4;
+        symbol [ eObj %tmp.23 77 16 20 ];
+        symbol [ Toybox %tmp.25 77 32 38 ];
+        %tmp.25 = getv ? :Toybox;
+        symbol [ Lang %tmp.26 77 39 43 ];
+        %tmp.26 = getv %tmp.25 :Lang;
+        symbol [ Dictionary %tmp.27 77 44 54 ];
+        %tmp.27 = getv %tmp.26 :Dictionary;
+        %tmp.28 = isa %tmp.23 %tmp.27;
+        bf %tmp.28 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_12_86_12_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_12_86_12_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 78 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_stop" ]
+        %e.5 = local;
+        symbol [ e %e.5 78 20 21 ];
+        %tmp.29 = lgetv %eObj.4;
+        symbol [ eObj %tmp.29 78 24 28 ];
+        %tmp.30 = as %tmp.29 { (Toybox.Lang.Dictionary) };
+        %tmp.31 = as %tmp.30 Toybox.Lang.Dictionary;
+        symbol [ Toybox %tmp.31 78 32 38 ];
+        symbol [ Lang %tmp.31 78 39 43 ];
+        symbol [ Dictionary %tmp.31 78 44 54 ];
+        lputv %e.5 %tmp.31;
+        symbol [ e %e.5 78 20 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 79 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_stop" ]
+        %s.6 = local;
+        symbol [ s %s.6 79 20 21 ];
+        %tmp.32 = lgetv %e.5;
+        symbol [ e %tmp.32 79 24 25 ];
+        symbol [ get %tmp.33 79 26 29 ];
+        %tmp.33 = getv function %tmp.32 :get;
+        %tmp.34 = "startedAt";
+        %tmp.35 = invoke %tmp.32 %tmp.33(%tmp.34);
+        lputv %s.6 %tmp.35;
+        symbol [ s %s.6 79 20 21 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 80 16 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_stop" ]
+        %en.7 = local;
+        symbol [ en %en.7 80 20 22 ];
+        %tmp.36 = lgetv %e.5;
+        symbol [ e %tmp.36 80 25 26 ];
+        symbol [ get %tmp.37 80 27 30 ];
+        %tmp.37 = getv function %tmp.36 :get;
+        %tmp.38 = "endedAt";
+        %tmp.39 = invoke %tmp.36 %tmp.37(%tmp.38);
+        lputv %en.7 %tmp.39;
+        symbol [ en %en.7 80 20 22 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 81 16 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_stmt:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_20_81_48_begin:
+        %tmp.40 = lgetv %s.6;
+        symbol [ s %tmp.40 81 20 21 ];
+        %tmp.41 = lgetv %startEpochSec;
+        symbol [ startEpochSec %tmp.41 81 25 38 ];
+        %tmp.42 = eq %tmp.40 %tmp.41;
+        bf %tmp.42 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_42_81_48_true:
+        %tmp.43 = lgetv %en.7;
+        symbol [ en %tmp.43 81 42 44 ];
+        %tmp.44 = lgetv %endEpochSec;
+        symbol [ endEpochSec %tmp.44 81 48 59 ];
+        %tmp.45 = eq %tmp.43 %tmp.44;
+        push %tmp.45;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_42_81_48_end:
+        %tmp.46 = phi [%tmp.42 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_20_81_48_begin] [%tmp.45 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_42_81_48_true] [%tmp.46 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_42_81_48_end];
+        bf %tmp.46 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_61_85_16_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 82 20 ]
+        %tmp.47 = lgetv %e.5;
+        symbol [ e %tmp.47 82 20 21 ];
+        symbol [ put %tmp.48 82 22 25 ];
+        %tmp.48 = getv function %tmp.47 :put;
+        %tmp.49 = "aiPending";
+        %tmp.50 = lgetv %pending;
+        symbol [ pending %tmp.50 82 39 46 ];
+        invoke %tmp.47 %tmp.48(%tmp.49, %tmp.50);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 83 20 ]
+        symbol [ Storage %tmp.51 83 20 27 ];
+        %tmp.51 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.52 83 28 36 ];
+        %tmp.52 = getv function %tmp.51 :setValue;
+        %tmp.53 = "fastSessionHistory";
+        %tmp.54 = lgetv %arr.2;
+        symbol [ arr %tmp.54 83 59 62 ];
+        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.54);
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 84 20 ]
+        ret ?;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_61_85_16_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_81_16_85_16_if_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_56_86_12_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_12_86_12_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_77_12_86_12_if_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_45_87_8_stop:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_incr:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 75 ]
+        %tmp.57 = lgetv %i.3;
+        symbol [ i %tmp.57 75 40 41 ];
+        %tmp.58 = add %tmp.57 1;
+        lputv %i.3 %tmp.58;
+        symbol [ i %i.3 75 40 41 ];
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_test;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_75_8_87_8_for_end:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_71_155_88_4_stop:
+    }
+    [ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 91; @symbol_functiondef = [getSessionHistory,91,20,37]; ]
+    static
+    function getSessionHistory() {
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_91_40_97_4_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 92 8 ]
+        [ "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_91_40_97_4_start" "G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_91_40_97_4_stop" ]
+        %history.1 = local;
+        symbol [ history %history.1 92 12 19 ];
+        symbol [ Storage %tmp.1 92 22 29 ];
+        %tmp.1 = getm $.Toybox.Application.Storage;
+        symbol [ getValue %tmp.2 92 30 38 ];
+        %tmp.2 = getv function %tmp.1 :getValue;
+        %tmp.3 = "fastSessionHistory";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        lputv %history.1 %tmp.4;
+        symbol [ history %history.1 92 12 19 ];
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 93 8 ]
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_8_95_8_if_stmt:
+        %tmp.5 = lgetv %history.1;
+        symbol [ history %tmp.5 93 14 21 ];
+        symbol [ Toybox %tmp.7 93 33 39 ];
+        %tmp.7 = getv ? :Toybox;
+        symbol [ Lang %tmp.8 93 40 44 ];
+        %tmp.8 = getv %tmp.7 :Lang;
+        symbol [ Array %tmp.9 93 45 50 ];
+        %tmp.9 = getv %tmp.8 :Array;
+        %tmp.10 = isa %tmp.5 %tmp.9;
+        %tmp.11 = not %tmp.10;
+        bf %tmp.11 @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_8_95_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_8_95_8_if_true:
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_53_95_8_start:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 94 12 ]
+        %tmp.12 = newa 0;
+        ret %tmp.12;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_53_95_8_stop:
+        goto @G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_8_95_8_if_end;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_93_8_95_8_if_end:
+[ "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc" 96 8 ]
+        %tmp.13 = lgetv %history.1;
+        symbol [ history %tmp.13 96 15 22 ];
+        ret %tmp.13;
+G__Projects_FastTrack_FastTrack_source_FastingSessionHistory_mc_91_40_97_4_stop:
+    }
+}
+[ @file = "G:\Projects\FastTrack\FastTrack\source\FastingSessionHistory.mc"; @line = 3; ]
+<init> {
+}

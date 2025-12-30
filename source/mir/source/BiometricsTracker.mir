@@ -1,0 +1,799 @@
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [System,1,14,20]; ]
+import Toybox.System;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
+import Toybox.Time;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Application,3,14,25]; @symbol_importdef<2> = [Storage,3,26,33]; ]
+import Toybox.Application.Storage;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Sensor,4,14,20]; ]
+import Toybox.Sensor;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [SensorHistory,5,14,27]; ]
+import Toybox.SensorHistory;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Lang,6,14,18]; ]
+import Toybox.Lang;
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 8; @symbol_classdef = [BiometricsTracker,8,6,23]; ]
+class BiometricsTracker {
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 8; ]
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 8; ]
+    static
+    <init> {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 10; @position = 16; @symbol_vardef = [_hrSum,10,16,22]; @symbol_type<0> = [Toybox,10,26,32]; @symbol_type<1> = [Lang,10,33,37]; @symbol_type<2> = [Number,10,38,44]; ]
+    private
+    var _hrSum as Toybox.Lang.Number = 0;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 11; @position = 16; @symbol_vardef = [_hrCount,11,16,24]; @symbol_type<0> = [Toybox,11,28,34]; @symbol_type<1> = [Lang,11,35,39]; @symbol_type<2> = [Number,11,40,46]; ]
+    private
+    var _hrCount as Toybox.Lang.Number = 0;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 12; @position = 16; @symbol_vardef = [_stressSum,12,16,26]; @symbol_type<0> = [Toybox,12,30,36]; @symbol_type<1> = [Lang,12,37,41]; @symbol_type<2> = [Number,12,42,48]; ]
+    private
+    var _stressSum as Toybox.Lang.Number = 0;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 13; @position = 16; @symbol_vardef = [_stressCount,13,16,28]; @symbol_type<0> = [Toybox,13,32,38]; @symbol_type<1> = [Lang,13,39,43]; @symbol_type<2> = [Number,13,44,50]; ]
+    private
+    var _stressCount as Toybox.Lang.Number = 0;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 14; @position = 16; @symbol_vardef = [_lastSampleTs,14,16,29]; ]
+    private
+    var _lastSampleTs;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 16; @position = 16; @symbol_vardef = [_hrMin,16,16,22]; ]
+    private
+    var _hrMin;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 17; @position = 16; @symbol_vardef = [_hrMax,17,16,22]; ]
+    private
+    var _hrMax;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 18; @position = 16; @symbol_vardef = [_stressMin,18,16,26]; ]
+    private
+    var _stressMin;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 19; @position = 16; @symbol_vardef = [_stressMax,19,16,26]; ]
+    private
+    var _stressMax;
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 21; @symbol_functiondef = [initialize,21,13,23]; ]
+    function initialize() as Void {
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_21_26_28_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 23 8 ]
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_beginTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_endTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_beginTry:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_12_25_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 24 12 ]
+        symbol [ Sensor %tmp.1 24 12 18 ];
+        %tmp.1 = getm $.Toybox.Sensor;
+        symbol [ setEnabledSensors %tmp.2 24 19 36 ];
+        %tmp.2 = getv function %tmp.1 :setEnabledSensors;
+        %tmp.3 = newa 1;
+        symbol [ Sensor %tmp.4 24 38 44 ];
+        %tmp.4 = getm $.Toybox.Sensor;
+        symbol [ SENSOR_HEARTRATE %tmp.5 24 45 61 ];
+        %tmp.5 = getv %tmp.4 :SENSOR_HEARTRATE;
+        %tmp.6 = dup %tmp.3;
+        %tmp.7 = aputv %tmp.6 0 %tmp.5;
+        invoke %tmp.1 %tmp.2(%tmp.7);
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_12_25_8_stop:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_endTry:
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_catch:
+        %tmp.8 = exception;
+        push %tmp.8;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 25 10 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_catch" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_25_10_27_8_end" ]
+        %e.1 = local;
+        symbol [ e %e.1 25 16 17 ];
+        %tmp.9 = dup %tmp.8;
+        lputv %e.1 %tmp.9;
+        symbol [ e %e.1 25 16 17 ];
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally;
+        pop;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_25_10_27_8_end:
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_25_10_27_8_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_25_10_27_8_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally;
+        throw %tmp.8;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_finally:
+        jsrret;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_23_8_27_8_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_21_26_28_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 30; @symbol_functiondef = [getCurrentStressLevel,30,13,34]; ]
+    function getCurrentStressLevel() {
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_30_37_45_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 32 8 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_12_32_81_begin:
+        symbol [ Toybox %tmp.2 32 14 20 ];
+        %tmp.2 = getv ? :Toybox;
+        %tmp.4 = const :SensorHistory;
+        symbol [ SensorHistory %tmp.4 32 26 39 const ];
+        %tmp.5 = canhazplz %tmp.2 %tmp.4;
+        %tmp.6 = not %tmp.5;
+        bt %tmp.6 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_true;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_44_32_81_false:
+        symbol [ SensorHistory %tmp.7 32 46 59 ];
+        %tmp.7 = getm $.Toybox.SensorHistory;
+        %tmp.9 = const :getStressHistory;
+        symbol [ getStressHistory %tmp.9 32 65 81 const ];
+        %tmp.10 = canhazplz %tmp.7 %tmp.9;
+        %tmp.11 = not %tmp.10;
+        push %tmp.11;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_44_32_81_end:
+        %tmp.12 = phi [%tmp.6 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_12_32_81_begin] [%tmp.11 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_44_32_81_false] [%tmp.12 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_44_32_81_end];
+        bf %tmp.12 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_84_34_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 33 12 ]
+        %tmp.13 = null;
+        ret %tmp.13;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_84_34_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_32_8_34_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 35 8 ]
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_beginTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_endTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_beginTry:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_12_43_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 36 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_12_43_8_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_12_43_8_stop" ]
+        %iter.1 = local;
+        symbol [ iter %iter.1 36 16 20 ];
+        symbol [ SensorHistory %tmp.14 36 23 36 ];
+        %tmp.14 = getm $.Toybox.SensorHistory;
+        symbol [ getStressHistory %tmp.15 36 37 53 ];
+        %tmp.15 = getv function %tmp.14 :getStressHistory;
+        %tmp.16 = newd 1;
+        %tmp.18 = const :period;
+        symbol [ period %tmp.18 36 56 62 const ];
+        %tmp.19 = 1;
+        %tmp.20 = dup %tmp.16;
+        %tmp.21 = aputv %tmp.20 %tmp.18 %tmp.19;
+        %tmp.22 = invoke %tmp.14 %tmp.15(%tmp.21);
+        lputv %iter.1 %tmp.22;
+        symbol [ iter %iter.1 36 16 20 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 37 12 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_12_42_12_if_stmt:
+        %tmp.23 = lgetv %iter.1;
+        symbol [ iter %tmp.23 37 16 20 ];
+        %tmp.24 = null;
+        %tmp.25 = ne %tmp.23 %tmp.24;
+        bf %tmp.25 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_12_42_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_12_42_12_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_30_42_12_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 38 16 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_30_42_12_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_30_42_12_stop" ]
+        %sample.2 = local;
+        symbol [ sample %sample.2 38 20 26 ];
+        %tmp.26 = lgetv %iter.1;
+        symbol [ iter %tmp.26 38 29 33 ];
+        %tmp.27 = as %tmp.26 { (!Null) };
+        symbol [ next %tmp.28 38 34 38 ];
+        %tmp.28 = getv function %tmp.27 :next;
+        %tmp.29 = invoke %tmp.27 %tmp.28();
+        lputv %sample.2 %tmp.29;
+        symbol [ sample %sample.2 38 20 26 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 39 16 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_20_39_55_begin:
+        %tmp.30 = lgetv %sample.2;
+        symbol [ sample %tmp.30 39 20 26 ];
+        %tmp.31 = null;
+        %tmp.32 = ne %tmp.30 %tmp.31;
+        bf %tmp.32 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_38_39_55_true:
+        %tmp.33 = lgetv %sample.2;
+        symbol [ sample %tmp.33 39 39 45 ];
+        %tmp.34 = as %tmp.33 { (!Null) };
+        %tmp.36 = const :data;
+        symbol [ data %tmp.36 39 51 55 const ];
+        %tmp.37 = canhazplz %tmp.34 %tmp.36;
+        push %tmp.37;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_38_39_55_end:
+        %tmp.38 = phi [%tmp.32 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_20_39_55_begin] [%tmp.37 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_38_39_55_true] [%tmp.38 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_38_39_55_end];
+        bf %tmp.38 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_58_41_16_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 40 20 ]
+        %tmp.39 = lgetv %sample.2;
+        symbol [ sample %tmp.39 40 27 33 ];
+        %tmp.40 = as %tmp.39 { (interface { var data; }) && (!Null) };
+        symbol [ data %tmp.41 40 34 38 ];
+        %tmp.41 = getv %tmp.40 :data;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+        ret %tmp.41;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_58_41_16_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_39_16_41_16_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_30_42_12_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_12_42_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_37_12_42_12_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_12_43_8_stop:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_endTry:
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_catch:
+        %tmp.42 = exception;
+        push %tmp.42;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 43 10 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_catch" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_43_10_43_20_end" ]
+        %e.3 = local;
+        symbol [ e %e.3 43 16 17 ];
+        %tmp.43 = dup %tmp.42;
+        lputv %e.3 %tmp.43;
+        symbol [ e %e.3 43 16 17 ];
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+        pop;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_43_10_43_20_end:
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_43_10_43_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_43_10_43_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally;
+        throw %tmp.42;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_finally:
+        jsrret;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_35_8_43_20_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 44 8 ]
+        %tmp.44 = null;
+        ret %tmp.44;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_30_37_45_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 47; @symbol_functiondef = [recordBiometrics,47,13,29]; ]
+    function recordBiometrics() {
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 49 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_stop" ]
+        %now.1 = local;
+        symbol [ now %now.1 49 12 15 ];
+        symbol [ Time %tmp.1 49 18 22 ];
+        %tmp.1 = getm $.Toybox.Time;
+        symbol [ now %tmp.2 49 23 26 ];
+        %tmp.2 = getv function %tmp.1 :now;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ value %tmp.4 49 29 34 ];
+        %tmp.4 = getv function %tmp.3 :value;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %now.1 %tmp.5;
+        symbol [ now %now.1 49 12 15 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 50 8 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_12_50_61_begin:
+        symbol [ _lastSampleTs %tmp.7 50 12 25 ];
+        %tmp.7 = getv ? :_lastSampleTs;
+        %tmp.8 = null;
+        %tmp.9 = ne %tmp.7 %tmp.8;
+        bf %tmp.9 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_37_50_61_true:
+        %tmp.10 = lgetv %now.1;
+        symbol [ now %tmp.10 50 38 41 ];
+        symbol [ _lastSampleTs %tmp.12 50 44 57 ];
+        %tmp.12 = getv ? :_lastSampleTs;
+        %tmp.13 = as %tmp.12 { (!Null) };
+        %tmp.14 = sub %tmp.10 %tmp.13;
+        %tmp.15 = 10;
+        %tmp.16 = lt %tmp.14 %tmp.15;
+        push %tmp.16;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_37_50_61_end:
+        %tmp.17 = phi [%tmp.9 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_12_50_61_begin] [%tmp.16 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_37_50_61_true] [%tmp.17 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_37_50_61_end];
+        bf %tmp.17 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_65_52_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 51 12 ]
+        ret ?;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_65_52_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_50_8_52_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 53 8 ]
+        %tmp.18 = lgetv %now.1;
+        symbol [ now %tmp.18 53 24 27 ];
+        symbol [ _lastSampleTs ? 53 8 21 ];
+        putv self :_lastSampleTs %tmp.18;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 56 8 ]
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_beginTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_endTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_beginTry:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_12_68_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 57 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_12_68_8_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_12_68_8_stop" ]
+        %info.2 = local;
+        symbol [ info %info.2 57 16 20 ];
+        symbol [ Sensor %tmp.19 57 23 29 ];
+        %tmp.19 = getm $.Toybox.Sensor;
+        symbol [ getInfo %tmp.20 57 30 37 ];
+        %tmp.20 = getv function %tmp.19 :getInfo;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        lputv %info.2 %tmp.21;
+        symbol [ info %info.2 57 16 20 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 58 12 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_16_58_52_begin:
+        %tmp.22 = lgetv %info.2;
+        symbol [ info %tmp.22 58 16 20 ];
+        %tmp.23 = null;
+        %tmp.24 = ne %tmp.22 %tmp.23;
+        bf %tmp.24 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_32_58_52_true:
+        %tmp.25 = lgetv %info.2;
+        symbol [ info %tmp.25 58 33 37 ];
+        %tmp.26 = as %tmp.25 { (!Null) };
+        %tmp.28 = const :heartRate;
+        symbol [ heartRate %tmp.28 58 43 52 const ];
+        %tmp.29 = canhazplz %tmp.26 %tmp.28;
+        push %tmp.29;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_32_58_52_end:
+        %tmp.30 = phi [%tmp.24 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_16_58_52_begin] [%tmp.29 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_32_58_52_true] [%tmp.30 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_32_58_52_end];
+        bf %tmp.30 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_55_67_12_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 59 16 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_55_67_12_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_55_67_12_stop" ]
+        %hr.3 = local;
+        symbol [ hr %hr.3 59 20 22 ];
+        %tmp.31 = lgetv %info.2;
+        symbol [ info %tmp.31 59 25 29 ];
+        %tmp.32 = as %tmp.31 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.33 59 30 39 ];
+        %tmp.33 = getv %tmp.32 :heartRate;
+        lputv %hr.3 %tmp.33;
+        symbol [ hr %hr.3 59 20 22 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 60 16 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_20_60_39_begin:
+        %tmp.34 = lgetv %hr.3;
+        symbol [ hr %tmp.34 60 20 22 ];
+        %tmp.35 = null;
+        %tmp.36 = ne %tmp.34 %tmp.35;
+        bf %tmp.36 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_34_60_39_true:
+        %tmp.37 = lgetv %hr.3;
+        symbol [ hr %tmp.37 60 34 36 ];
+        %tmp.38 = as %tmp.37 { (!Null) };
+        %tmp.39 = 0;
+        %tmp.40 = gt %tmp.38 %tmp.39;
+        push %tmp.40;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_34_60_39_end:
+        %tmp.41 = phi [%tmp.36 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_20_60_39_begin] [%tmp.40 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_34_60_39_true] [%tmp.41 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_34_60_39_end];
+        bf %tmp.41 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_42_66_16_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 61 20 ]
+        symbol [ _hrSum %tmp.42 61 20 26 ];
+        %tmp.42 = getv self :_hrSum;
+        %tmp.43 = lgetv %hr.3;
+        symbol [ hr %tmp.43 61 30 32 ];
+        %tmp.44 = as %tmp.43 { (!Null) };
+        %tmp.45 = add %tmp.42 %tmp.44;
+        symbol [ _hrSum ? 61 20 26 ];
+        putv self :_hrSum dup %tmp.45;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 62 20 ]
+        symbol [ _hrCount %tmp.46 62 20 28 ];
+        %tmp.46 = getv self :_hrCount;
+        %tmp.47 = 1;
+        %tmp.48 = add %tmp.46 %tmp.47;
+        symbol [ _hrCount ? 62 20 28 ];
+        putv self :_hrCount dup %tmp.48;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 64 20 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_24_64_47_begin:
+        symbol [ _hrMin %tmp.50 64 24 30 ];
+        %tmp.50 = getv ? :_hrMin;
+        %tmp.51 = null;
+        %tmp.52 = eq %tmp.50 %tmp.51;
+        bt %tmp.52 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_true;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_42_64_47_false:
+        %tmp.53 = lgetv %hr.3;
+        symbol [ hr %tmp.53 64 42 44 ];
+        %tmp.54 = as %tmp.53 { (!Null) };
+        symbol [ _hrMin %tmp.56 64 47 53 ];
+        %tmp.56 = getv ? :_hrMin;
+        %tmp.57 = as %tmp.56 { (!Null) };
+        %tmp.58 = lt %tmp.54 %tmp.57;
+        push %tmp.58;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_42_64_47_end:
+        %tmp.59 = phi [%tmp.52 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_24_64_47_begin] [%tmp.58 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_42_64_47_false] [%tmp.59 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_42_64_47_end];
+        bf %tmp.59 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_55_64_70_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 64 57 ]
+        %tmp.60 = lgetv %hr.3;
+        symbol [ hr %tmp.60 64 66 68 ];
+        %tmp.61 = as %tmp.60 { (!Null) };
+        symbol [ _hrMin ? 64 57 63 ];
+        putv self :_hrMin %tmp.61;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_55_64_70_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_64_20_64_70_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 65 20 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_24_65_47_begin:
+        symbol [ _hrMax %tmp.63 65 24 30 ];
+        %tmp.63 = getv ? :_hrMax;
+        %tmp.64 = null;
+        %tmp.65 = eq %tmp.63 %tmp.64;
+        bt %tmp.65 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_true;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_42_65_47_false:
+        %tmp.66 = lgetv %hr.3;
+        symbol [ hr %tmp.66 65 42 44 ];
+        %tmp.67 = as %tmp.66 { (!Null) };
+        symbol [ _hrMax %tmp.69 65 47 53 ];
+        %tmp.69 = getv ? :_hrMax;
+        %tmp.70 = as %tmp.69 { (!Null) };
+        %tmp.71 = gt %tmp.67 %tmp.70;
+        push %tmp.71;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_42_65_47_end:
+        %tmp.72 = phi [%tmp.65 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_24_65_47_begin] [%tmp.71 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_42_65_47_false] [%tmp.72 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_42_65_47_end];
+        bf %tmp.72 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_55_65_70_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 65 57 ]
+        %tmp.73 = lgetv %hr.3;
+        symbol [ hr %tmp.73 65 66 68 ];
+        %tmp.74 = as %tmp.73 { (!Null) };
+        symbol [ _hrMax ? 65 57 63 ];
+        putv self :_hrMax %tmp.74;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_55_65_70_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_65_20_65_70_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_42_66_16_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_60_16_66_16_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_55_67_12_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_58_12_67_12_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_12_68_8_stop:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_endTry:
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_catch:
+        %tmp.75 = exception;
+        push %tmp.75;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 68 10 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_catch" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_68_10_68_20_end" ]
+        %e.4 = local;
+        symbol [ e %e.4 68 16 17 ];
+        %tmp.76 = dup %tmp.75;
+        lputv %e.4 %tmp.76;
+        symbol [ e %e.4 68 16 17 ];
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally;
+        pop;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_68_10_68_20_end:
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_68_10_68_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_68_10_68_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally;
+        throw %tmp.75;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_finally:
+        jsrret;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_56_8_68_20_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 71 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_stop" ]
+        %stress.5 = local;
+        symbol [ stress %stress.5 71 12 18 ];
+        %tmp.77 = self;
+        symbol [ getCurrentStressLevel %tmp.78 71 21 42 ];
+        %tmp.78 = getv function %tmp.77 :getCurrentStressLevel;
+        %tmp.79 = invoke %tmp.77 %tmp.78();
+        lputv %stress.5 %tmp.79;
+        symbol [ stress %stress.5 71 12 18 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 72 8 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_12_72_40_begin:
+        %tmp.80 = lgetv %stress.5;
+        symbol [ stress %tmp.80 72 12 18 ];
+        %tmp.81 = null;
+        %tmp.82 = ne %tmp.80 %tmp.81;
+        bf %tmp.82 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_30_72_40_true:
+        %tmp.83 = lgetv %stress.5;
+        symbol [ stress %tmp.83 72 30 36 ];
+        %tmp.84 = as %tmp.83 { (!Null) };
+        %tmp.85 = 0;
+        %tmp.86 = gte %tmp.84 %tmp.85;
+        push %tmp.86;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_30_72_40_end:
+        %tmp.87 = phi [%tmp.82 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_12_72_40_begin] [%tmp.86 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_30_72_40_true] [%tmp.87 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_30_72_40_end];
+        bf %tmp.87 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_43_78_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 73 12 ]
+        symbol [ _stressSum %tmp.88 73 12 22 ];
+        %tmp.88 = getv self :_stressSum;
+        %tmp.89 = lgetv %stress.5;
+        symbol [ stress %tmp.89 73 26 32 ];
+        %tmp.90 = as %tmp.89 { (!Null) };
+        %tmp.91 = add %tmp.88 %tmp.90;
+        symbol [ _stressSum ? 73 12 22 ];
+        putv self :_stressSum dup %tmp.91;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 74 12 ]
+        symbol [ _stressCount %tmp.92 74 12 24 ];
+        %tmp.92 = getv self :_stressCount;
+        %tmp.93 = 1;
+        %tmp.94 = add %tmp.92 %tmp.93;
+        symbol [ _stressCount ? 74 12 24 ];
+        putv self :_stressCount dup %tmp.94;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 76 12 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_16_76_47_begin:
+        symbol [ _stressMin %tmp.96 76 16 26 ];
+        %tmp.96 = getv ? :_stressMin;
+        %tmp.97 = null;
+        %tmp.98 = eq %tmp.96 %tmp.97;
+        bt %tmp.98 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_true;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_38_76_47_false:
+        %tmp.99 = lgetv %stress.5;
+        symbol [ stress %tmp.99 76 38 44 ];
+        %tmp.100 = as %tmp.99 { (!Null) };
+        symbol [ _stressMin %tmp.102 76 47 57 ];
+        %tmp.102 = getv ? :_stressMin;
+        %tmp.103 = as %tmp.102 { (!Null) };
+        %tmp.104 = lt %tmp.100 %tmp.103;
+        push %tmp.104;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_38_76_47_end:
+        %tmp.105 = phi [%tmp.98 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_16_76_47_begin] [%tmp.104 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_38_76_47_false] [%tmp.105 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_38_76_47_end];
+        bf %tmp.105 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_59_76_82_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 76 61 ]
+        %tmp.106 = lgetv %stress.5;
+        symbol [ stress %tmp.106 76 74 80 ];
+        %tmp.107 = as %tmp.106 { (!Null) };
+        symbol [ _stressMin ? 76 61 71 ];
+        putv self :_stressMin %tmp.107;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_59_76_82_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_76_12_76_82_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 77 12 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_16_77_47_begin:
+        symbol [ _stressMax %tmp.109 77 16 26 ];
+        %tmp.109 = getv ? :_stressMax;
+        %tmp.110 = null;
+        %tmp.111 = eq %tmp.109 %tmp.110;
+        bt %tmp.111 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_true;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_38_77_47_false:
+        %tmp.112 = lgetv %stress.5;
+        symbol [ stress %tmp.112 77 38 44 ];
+        %tmp.113 = as %tmp.112 { (!Null) };
+        symbol [ _stressMax %tmp.115 77 47 57 ];
+        %tmp.115 = getv ? :_stressMax;
+        %tmp.116 = as %tmp.115 { (!Null) };
+        %tmp.117 = gt %tmp.113 %tmp.116;
+        push %tmp.117;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_38_77_47_end:
+        %tmp.118 = phi [%tmp.111 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_16_77_47_begin] [%tmp.117 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_38_77_47_false] [%tmp.118 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_38_77_47_end];
+        bf %tmp.118 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_59_77_82_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 77 61 ]
+        %tmp.119 = lgetv %stress.5;
+        symbol [ stress %tmp.119 77 74 80 ];
+        %tmp.120 = as %tmp.119 { (!Null) };
+        symbol [ _stressMax ? 77 61 71 ];
+        putv self :_stressMax %tmp.120;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_59_77_82_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_77_12_77_82_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_43_78_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_72_8_78_8_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_47_32_79_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 81; @symbol_functiondef = [getSessionStats,81,13,28]; @symbol_param<0> = [startTime,81,29,38]; @symbol_param<1> = [endTime,81,40,47]; ]
+    function getSessionStats(startTime, endTime) {
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 83 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_stop" ]
+        %avgHr.1 = local;
+        symbol [ avgHr %avgHr.1 83 12 17 ];
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_begin:
+        symbol [ _hrCount %tmp.2 83 21 29 ];
+        %tmp.2 = getv ? :_hrCount;
+        %tmp.3 = 0;
+        %tmp.4 = gt %tmp.2 %tmp.3;
+        bf %tmp.4 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_false;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_true:
+        symbol [ _hrSum %tmp.6 83 38 44 ];
+        %tmp.6 = getv ? :_hrSum;
+        symbol [ _hrCount %tmp.8 83 47 55 ];
+        %tmp.8 = getv ? :_hrCount;
+        %tmp.9 = div %tmp.6 %tmp.8;
+        push %tmp.9;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_false:
+        %tmp.10 = null;
+        push %tmp.10;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_end:
+        %tmp.11 = phi [%tmp.4 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_begin] [%tmp.9 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_true] [%tmp.10 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_false] [%tmp.11 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_83_20_83_59_end];
+        lputv %avgHr.1 %tmp.11;
+        symbol [ avgHr %avgHr.1 83 12 17 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 84 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_stop" ]
+        %avgStress.2 = local;
+        symbol [ avgStress %avgStress.2 84 12 21 ];
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_begin:
+        symbol [ _stressCount %tmp.13 84 25 37 ];
+        %tmp.13 = getv ? :_stressCount;
+        %tmp.14 = 0;
+        %tmp.15 = gt %tmp.13 %tmp.14;
+        bf %tmp.15 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_false;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_true:
+        symbol [ _stressSum %tmp.17 84 46 56 ];
+        %tmp.17 = getv ? :_stressSum;
+        symbol [ _stressCount %tmp.19 84 59 71 ];
+        %tmp.19 = getv ? :_stressCount;
+        %tmp.20 = div %tmp.17 %tmp.19;
+        push %tmp.20;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_false:
+        %tmp.21 = null;
+        push %tmp.21;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_end:
+        %tmp.22 = phi [%tmp.15 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_begin] [%tmp.20 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_true] [%tmp.21 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_false] [%tmp.22 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_84_24_84_75_end];
+        lputv %avgStress.2 %tmp.22;
+        symbol [ avgStress %avgStress.2 84 12 21 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 85 8 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_stop" ]
+        %durationHours.3 = local;
+        symbol [ durationHours %durationHours.3 85 12 25 ];
+        %tmp.23 = null;
+        lputv %durationHours.3 %tmp.23;
+        symbol [ durationHours %durationHours.3 85 12 25 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 86 8 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_12_86_44_begin:
+        %tmp.24 = lgetv %startTime;
+        symbol [ startTime %tmp.24 86 12 21 ];
+        %tmp.25 = null;
+        %tmp.26 = ne %tmp.24 %tmp.25;
+        bf %tmp.26 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_33_86_44_true:
+        %tmp.27 = lgetv %endTime;
+        symbol [ endTime %tmp.27 86 33 40 ];
+        %tmp.28 = null;
+        %tmp.29 = ne %tmp.27 %tmp.28;
+        push %tmp.29;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_33_86_44_end:
+        %tmp.30 = phi [%tmp.26 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_12_86_44_begin] [%tmp.29 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_33_86_44_true] [%tmp.30 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_33_86_44_end];
+        bf %tmp.30 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_50_88_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 87 12 ]
+        %tmp.31 = lgetv %endTime;
+        symbol [ endTime %tmp.31 87 28 35 ];
+        %tmp.32 = as %tmp.31 { (!Null) };
+        symbol [ compare %tmp.33 87 36 43 ];
+        %tmp.33 = getv function %tmp.32 :compare;
+        %tmp.34 = lgetv %startTime;
+        symbol [ startTime %tmp.34 87 44 53 ];
+        %tmp.35 = as %tmp.34 { (!Null) };
+        %tmp.36 = invoke %tmp.32 %tmp.33(%tmp.35);
+        %tmp.37 = 3600.0;
+        %tmp.38 = div %tmp.36 %tmp.37;
+        lputv %durationHours.3 %tmp.38;
+        symbol [ durationHours %durationHours.3 87 12 25 ];
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_50_88_8_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_86_8_88_8_if_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 89 8 ]
+        %tmp.39 = newd 9;
+        %tmp.40 = "avgHeartRate";
+        %tmp.41 = lgetv %avgHr.1;
+        symbol [ avgHr %tmp.41 90 30 35 ];
+        %tmp.42 = dup %tmp.39;
+        %tmp.43 = aputv %tmp.42 %tmp.40 %tmp.41;
+        %tmp.44 = "avgStress";
+        %tmp.45 = lgetv %avgStress.2;
+        symbol [ avgStress %tmp.45 91 27 36 ];
+        %tmp.46 = dup %tmp.43;
+        %tmp.47 = aputv %tmp.46 %tmp.44 %tmp.45;
+        %tmp.48 = "durationHours";
+        %tmp.49 = lgetv %durationHours.3;
+        symbol [ durationHours %tmp.49 92 31 44 ];
+        %tmp.50 = dup %tmp.47;
+        %tmp.51 = aputv %tmp.50 %tmp.48 %tmp.49;
+        %tmp.52 = "hrMin";
+        symbol [ _hrMin %tmp.54 94 23 29 ];
+        %tmp.54 = getv ? :_hrMin;
+        %tmp.55 = dup %tmp.51;
+        %tmp.56 = aputv %tmp.55 %tmp.52 %tmp.54;
+        %tmp.57 = "hrMax";
+        symbol [ _hrMax %tmp.59 95 23 29 ];
+        %tmp.59 = getv ? :_hrMax;
+        %tmp.60 = dup %tmp.56;
+        %tmp.61 = aputv %tmp.60 %tmp.57 %tmp.59;
+        %tmp.62 = "stressMin";
+        symbol [ _stressMin %tmp.64 96 27 37 ];
+        %tmp.64 = getv ? :_stressMin;
+        %tmp.65 = dup %tmp.61;
+        %tmp.66 = aputv %tmp.65 %tmp.62 %tmp.64;
+        %tmp.67 = "stressMax";
+        symbol [ _stressMax %tmp.69 97 27 37 ];
+        %tmp.69 = getv ? :_stressMax;
+        %tmp.70 = dup %tmp.66;
+        %tmp.71 = aputv %tmp.70 %tmp.67 %tmp.69;
+        %tmp.72 = "hrSamples";
+        symbol [ _hrCount %tmp.74 98 27 35 ];
+        %tmp.74 = getv ? :_hrCount;
+        %tmp.75 = dup %tmp.71;
+        %tmp.76 = aputv %tmp.75 %tmp.72 %tmp.74;
+        %tmp.77 = "stressSamples";
+        symbol [ _stressCount %tmp.79 99 31 43 ];
+        %tmp.79 = getv ? :_stressCount;
+        %tmp.80 = dup %tmp.76;
+        %tmp.81 = aputv %tmp.80 %tmp.77 %tmp.79;
+        ret %tmp.81;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_81_49_101_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 103; @symbol_functiondef = [getCurrentHeartRate,103,13,32]; ]
+    function getCurrentHeartRate() {
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_103_35_111_4_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 104 8 ]
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_beginTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_endTry @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_beginTry:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_12_109_8_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 105 12 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_12_109_8_start" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_12_109_8_stop" ]
+        %info.1 = local;
+        symbol [ info %info.1 105 16 20 ];
+        symbol [ Sensor %tmp.1 105 23 29 ];
+        %tmp.1 = getm $.Toybox.Sensor;
+        symbol [ getInfo %tmp.2 105 30 37 ];
+        %tmp.2 = getv function %tmp.1 :getInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %info.1 %tmp.3;
+        symbol [ info %info.1 105 16 20 ];
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 106 12 ]
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_stmt:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_16_106_52_begin:
+        %tmp.4 = lgetv %info.1;
+        symbol [ info %tmp.4 106 16 20 ];
+        %tmp.5 = null;
+        %tmp.6 = ne %tmp.4 %tmp.5;
+        bf %tmp.6 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_32_106_52_true:
+        %tmp.7 = lgetv %info.1;
+        symbol [ info %tmp.7 106 33 37 ];
+        %tmp.8 = as %tmp.7 { (!Null) };
+        %tmp.10 = const :heartRate;
+        symbol [ heartRate %tmp.10 106 43 52 const ];
+        %tmp.11 = canhazplz %tmp.8 %tmp.10;
+        push %tmp.11;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_32_106_52_end:
+        %tmp.12 = phi [%tmp.6 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_16_106_52_begin] [%tmp.11 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_32_106_52_true] [%tmp.12 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_32_106_52_end];
+        bf %tmp.12 @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_true:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_55_108_12_start:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 107 16 ]
+        %tmp.13 = lgetv %info.1;
+        symbol [ info %tmp.13 107 23 27 ];
+        %tmp.14 = as %tmp.13 { (interface { var heartRate; }) && (!Null) };
+        symbol [ heartRate %tmp.15 107 28 37 ];
+        %tmp.15 = getv %tmp.14 :heartRate;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+        ret %tmp.15;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_55_108_12_stop:
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_106_12_108_12_if_end:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_12_109_8_stop:
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_endTry:
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_catch:
+        %tmp.16 = exception;
+        push %tmp.16;
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 109 10 ]
+        [ "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_catch" "N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_109_10_109_20_end" ]
+        %e.2 = local;
+        symbol [ e %e.2 109 16 17 ];
+        %tmp.17 = dup %tmp.16;
+        lputv %e.2 %tmp.17;
+        symbol [ e %e.2 109 16 17 ];
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+        pop;
+        goto @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_end;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_109_10_109_20_end:
+        try @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_catch @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_109_10_109_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_109_10_109_20_end @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+        jsr @N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally;
+        throw %tmp.16;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_finally:
+        jsrret;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_104_8_109_20_end:
+[ "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc" 110 8 ]
+        %tmp.18 = null;
+        ret %tmp.18;
+N_Projects_FastTrack_FastTrack_source_BiometricsTracker_mc_103_35_111_4_stop:
+    }
+}
+[ @file = "N:\Projects\FastTrack\FastTrack\source\BiometricsTracker.mc"; @line = 1; ]
+<init> {
+}
