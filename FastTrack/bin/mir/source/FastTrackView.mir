@@ -2,63 +2,307 @@
 import Toybox.Graphics;
 [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 4; @symbol_classdef = [FastTrackView,4,6,19]; @symbol_extends<0> = [WatchUi,4,28,35]; @symbol_extends<1> = [View,4,36,40]; ]
+[ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Time,3,14,18]; ]
+import Toybox.Time;
+[ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; @symbol_importdef<2> = [Gregorian,4,19,28]; ]
+import Toybox.Time.Gregorian;
+[ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 6; @symbol_classdef = [FastTrackView,6,6,19]; @symbol_extends<0> = [WatchUi,6,28,35]; @symbol_extends<1> = [View,6,36,40]; ]
 class FastTrackView extends WatchUi.View {
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 4; ]
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 6; ]
     <init> {
     }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 4; ]
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 6; ]
     static
     <init> {
     }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 6; @symbol_functiondef = [initialize,6,13,23]; ]
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 7; @position = 16; @symbol_vardef = [fastingSession,7,16,30]; @symbol_type<0> = [FastingSession,7,34,48]; ]
+    private
+    var fastingSession as FastingSession;
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 8; @position = 16; @symbol_vardef = [elapsedTimeString,8,16,33]; @symbol_type<0> = [String,8,37,43]; ]
+    private
+    var elapsedTimeString as String = "00:00:00";
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; ]
     function initialize() as Void {
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_6_26_8_4_start:
-[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 7 8 ]
-        symbol [ View %tmp.2 7 8 12 ];
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_10_26_13_4_start:
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 11 8 ]
+        symbol [ View %tmp.2 11 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 7 13 23 ];
+        symbol [ initialize %tmp.3 11 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_6_26_8_4_stop:
-    }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 11; @symbol_functiondef = [onLayout,11,13,21]; @symbol_param<0> = [dc,11,22,24]; @symbol_param<0>_type<0> = [Dc,11,28,30]; ]
-    function onLayout(dc as Dc) as Void {
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_11_40_13_4_start:
 [ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 12 8 ]
+        symbol [ FastingSession %tmp.7 12 29 43 ];
+        %tmp.7 = getv ? :FastingSession;
+        %tmp.8 = self;
+        symbol [ method %tmp.9 12 44 50 ];
+        %tmp.9 = getv function %tmp.8 :method;
+        %tmp.11 = const :onTimerUpdate;
+        symbol [ onTimerUpdate %tmp.11 12 52 65 const ];
+        %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
+        %tmp.4 = newc %tmp.7 (%tmp.12);
+        symbol [ fastingSession ? 12 8 22 ];
+        putv self :fastingSession %tmp.4;
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_10_26_13_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_16_40_18_4_start:
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 17 8 ]
         %tmp.1 = self;
-        symbol [ setLayout %tmp.2 12 8 17 ];
+        symbol [ setLayout %tmp.2 17 8 17 ];
         %tmp.2 = getv function %tmp.1 :setLayout;
-        symbol [ Rez %tmp.4 12 18 21 ];
+        symbol [ Rez %tmp.4 17 18 21 ];
         %tmp.4 = getv ? :Rez;
-        symbol [ Layouts %tmp.5 12 22 29 ];
+        symbol [ Layouts %tmp.5 17 22 29 ];
         %tmp.5 = getv %tmp.4 :Layouts;
-        symbol [ MainLayout %tmp.6 12 30 40 ];
+        symbol [ MainLayout %tmp.6 17 30 40 ];
         %tmp.6 = getv function %tmp.5 :MainLayout;
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 12 41 43 ];
+        symbol [ dc %tmp.7 17 41 43 ];
         %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
         invoke %tmp.1 %tmp.2(%tmp.8);
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_11_40_13_4_stop:
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_16_40_18_4_stop:
     }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 18; @symbol_functiondef = [onShow,18,13,19]; ]
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 23; @symbol_functiondef = [onShow,23,13,19]; ]
     function onShow() as Void {
-    }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 22; @symbol_functiondef = [onUpdate,22,13,21]; @symbol_param<0> = [dc,22,22,24]; @symbol_param<0>_type<0> = [Dc,22,28,30]; ]
-    function onUpdate(dc as Dc) as Void {
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_22_40_25_4_start:
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_23_30_25_4_start:
 [ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 24 8 ]
-        symbol [ View %tmp.2 24 8 12 ];
-        %tmp.2 = getv ? :View;
-        symbol [ onUpdate %tmp.3 24 13 21 ];
-        %tmp.3 = getv function %tmp.2 :onUpdate;
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 24 22 24 ];
-        invoke %tmp.2 %tmp.3(%tmp.4);
-N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_22_40_25_4_stop:
+        symbol [ fastingSession %tmp.2 24 8 22 ];
+        %tmp.2 = getv ? :fastingSession;
+        symbol [ restoreState %tmp.3 24 23 35 ];
+        %tmp.3 = getv function %tmp.2 :restoreState;
+        invoke %tmp.2 %tmp.3();
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_23_30_25_4_stop:
     }
-    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 30; @symbol_functiondef = [onHide,30,13,19]; ]
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 28; @symbol_functiondef = [onUpdate,28,13,21]; @symbol_param<0> = [dc,28,22,24]; @symbol_param<0>_type<0> = [Dc,28,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_start:
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 29 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 29 8 10 ];
+        symbol [ setColor %tmp.2 29 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        symbol [ Graphics %tmp.3 29 20 28 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.4 29 29 40 ];
+        %tmp.4 = getv %tmp.3 :COLOR_BLACK;
+        symbol [ Graphics %tmp.5 29 42 50 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.6 29 51 62 ];
+        %tmp.6 = getv %tmp.5 :COLOR_BLACK;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 30 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 30 8 10 ];
+        symbol [ clear %tmp.8 30 11 16 ];
+        %tmp.8 = getv function %tmp.7 :clear;
+        invoke %tmp.7 %tmp.8();
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 31 8 ]
+        %tmp.9 = lgetv %dc;
+        symbol [ dc %tmp.9 31 8 10 ];
+        symbol [ setColor %tmp.10 31 11 19 ];
+        %tmp.10 = getv function %tmp.9 :setColor;
+        symbol [ Graphics %tmp.11 31 20 28 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.12 31 29 40 ];
+        %tmp.12 = getv %tmp.11 :COLOR_WHITE;
+        symbol [ Graphics %tmp.13 31 42 50 ];
+        %tmp.13 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.14 31 51 68 ];
+        %tmp.14 = getv %tmp.13 :COLOR_TRANSPARENT;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.14);
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 34 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_stop" ]
+        %font.1 = local;
+        symbol [ font %font.1 34 12 16 ];
+        symbol [ Graphics %tmp.15 34 19 27 ];
+        %tmp.15 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_THAI_HOT %tmp.16 34 28 48 ];
+        %tmp.16 = getv %tmp.15 :FONT_NUMBER_THAI_HOT;
+        lputv %font.1 %tmp.16;
+        symbol [ font %font.1 34 12 16 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 35 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_stop" ]
+        %timeStr.2 = local;
+        symbol [ timeStr %timeStr.2 35 12 19 ];
+        symbol [ elapsedTimeString %tmp.18 35 22 39 ];
+        %tmp.18 = getv ? :elapsedTimeString;
+        lputv %timeStr.2 %tmp.18;
+        symbol [ timeStr %timeStr.2 35 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 36 8 ]
+        %tmp.19 = lgetv %dc;
+        symbol [ dc %tmp.19 36 8 10 ];
+        symbol [ drawText %tmp.20 36 11 19 ];
+        %tmp.20 = getv function %tmp.19 :drawText;
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 37 12 14 ];
+        symbol [ getWidth %tmp.22 37 15 23 ];
+        %tmp.22 = getv function %tmp.21 :getWidth;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        %tmp.24 = 2;
+        %tmp.25 = div %tmp.23 %tmp.24;
+        %tmp.26 = lgetv %dc;
+        symbol [ dc %tmp.26 38 12 14 ];
+        symbol [ getHeight %tmp.27 38 15 24 ];
+        %tmp.27 = getv function %tmp.26 :getHeight;
+        %tmp.28 = invoke %tmp.26 %tmp.27();
+        %tmp.29 = 2;
+        %tmp.30 = div %tmp.28 %tmp.29;
+        %tmp.31 = 30;
+        %tmp.32 = sub %tmp.30 %tmp.31;
+        %tmp.33 = lgetv %font.1;
+        symbol [ font %tmp.33 39 12 16 ];
+        %tmp.34 = lgetv %timeStr.2;
+        symbol [ timeStr %tmp.34 40 12 19 ];
+        symbol [ Graphics %tmp.35 41 12 20 ];
+        %tmp.35 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.36 41 21 40 ];
+        %tmp.36 = getv %tmp.35 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.19 %tmp.20(%tmp.25, %tmp.32, %tmp.33, %tmp.34, %tmp.36);
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 45 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_stop" ]
+        %statusStr.3 = local;
+        symbol [ statusStr %statusStr.3 45 12 21 ];
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_begin:
+        symbol [ fastingSession %tmp.38 45 24 38 ];
+        %tmp.38 = getv ? :fastingSession;
+        symbol [ isActiveFast %tmp.39 45 39 51 ];
+        %tmp.39 = getv function %tmp.38 :isActiveFast;
+        %tmp.40 = invoke %tmp.38 %tmp.39();
+        bf %tmp.40 @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_false;
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_true:
+        %tmp.41 = "Active Fast";
+        push %tmp.41;
+        goto @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_end;
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_false:
+        %tmp.42 = "Not Fasting";
+        push %tmp.42;
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_end:
+        %tmp.43 = phi [%tmp.40 @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_begin] [%tmp.41 @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_true] [%tmp.42 @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_false] [%tmp.43 @N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_45_24_45_72_end];
+        lputv %statusStr.3 %tmp.43;
+        symbol [ statusStr %statusStr.3 45 12 21 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 46 8 ]
+        %tmp.44 = lgetv %dc;
+        symbol [ dc %tmp.44 46 8 10 ];
+        symbol [ drawText %tmp.45 46 11 19 ];
+        %tmp.45 = getv function %tmp.44 :drawText;
+        %tmp.46 = lgetv %dc;
+        symbol [ dc %tmp.46 47 12 14 ];
+        symbol [ getWidth %tmp.47 47 15 23 ];
+        %tmp.47 = getv function %tmp.46 :getWidth;
+        %tmp.48 = invoke %tmp.46 %tmp.47();
+        %tmp.49 = 2;
+        %tmp.50 = div %tmp.48 %tmp.49;
+        %tmp.51 = lgetv %dc;
+        symbol [ dc %tmp.51 48 12 14 ];
+        symbol [ getHeight %tmp.52 48 15 24 ];
+        %tmp.52 = getv function %tmp.51 :getHeight;
+        %tmp.53 = invoke %tmp.51 %tmp.52();
+        %tmp.54 = 2;
+        %tmp.55 = div %tmp.53 %tmp.54;
+        %tmp.56 = 30;
+        %tmp.57 = add %tmp.55 %tmp.56;
+        symbol [ Graphics %tmp.58 49 12 20 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.59 49 21 32 ];
+        %tmp.59 = getv %tmp.58 :FONT_MEDIUM;
+        %tmp.60 = lgetv %statusStr.3;
+        symbol [ statusStr %tmp.60 50 12 21 ];
+        symbol [ Graphics %tmp.61 51 12 20 ];
+        %tmp.61 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.62 51 21 40 ];
+        %tmp.62 = getv %tmp.61 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.44 %tmp.45(%tmp.50, %tmp.57, %tmp.59, %tmp.60, %tmp.62);
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_28_40_53_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 58; @symbol_functiondef = [onHide,58,13,19]; ]
     function onHide() as Void {
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 61; @symbol_functiondef = [onTimerUpdate,61,13,26]; @symbol_param<0> = [timeElapsed,61,27,38]; @symbol_param<0>_type<0> = [Number,61,42,48]; ]
+    function onTimerUpdate(timeElapsed as Number) as Void {
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_start:
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 62 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_stop" ]
+        %hours.1 = local;
+        symbol [ hours %hours.1 62 12 17 ];
+        %tmp.1 = lgetv %timeElapsed;
+        symbol [ timeElapsed %tmp.1 62 20 31 ];
+        %tmp.2 = 3600;
+        %tmp.3 = div %tmp.1 %tmp.2;
+        lputv %hours.1 %tmp.3;
+        symbol [ hours %hours.1 62 12 17 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 63 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_stop" ]
+        %minutes.2 = local;
+        symbol [ minutes %minutes.2 63 12 19 ];
+        %tmp.4 = lgetv %timeElapsed;
+        symbol [ timeElapsed %tmp.4 63 23 34 ];
+        %tmp.5 = 3600;
+        %tmp.6 = mod %tmp.4 %tmp.5;
+        %tmp.7 = 60;
+        %tmp.8 = div %tmp.6 %tmp.7;
+        lputv %minutes.2 %tmp.8;
+        symbol [ minutes %minutes.2 63 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 64 8 ]
+        [ "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_start" "N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_stop" ]
+        %seconds.3 = local;
+        symbol [ seconds %seconds.3 64 12 19 ];
+        %tmp.9 = lgetv %timeElapsed;
+        symbol [ timeElapsed %tmp.9 64 22 33 ];
+        %tmp.10 = 60;
+        %tmp.11 = mod %tmp.9 %tmp.10;
+        lputv %seconds.3 %tmp.11;
+        symbol [ seconds %seconds.3 64 12 19 ];
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 66 8 ]
+        symbol [ Lang %tmp.13 66 28 32 ];
+        %tmp.13 = getv ? :Lang;
+        symbol [ format %tmp.14 66 33 39 ];
+        %tmp.14 = getv function %tmp.13 :format;
+        %tmp.15 = "$1$:$2$:$3$";
+        %tmp.16 = newa 3;
+        %tmp.17 = lgetv %hours.1;
+        symbol [ hours %tmp.17 67 12 17 ];
+        symbol [ format %tmp.18 67 18 24 ];
+        %tmp.18 = getv function %tmp.17 :format;
+        %tmp.19 = "%02d";
+        %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
+        %tmp.21 = dup %tmp.16;
+        %tmp.22 = aputv %tmp.21 0 %tmp.20;
+        %tmp.23 = lgetv %minutes.2;
+        symbol [ minutes %tmp.23 68 12 19 ];
+        symbol [ format %tmp.24 68 20 26 ];
+        %tmp.24 = getv function %tmp.23 :format;
+        %tmp.25 = "%02d";
+        %tmp.26 = invoke %tmp.23 %tmp.24(%tmp.25);
+        %tmp.27 = dup %tmp.22;
+        %tmp.28 = aputv %tmp.27 1 %tmp.26;
+        %tmp.29 = lgetv %seconds.3;
+        symbol [ seconds %tmp.29 69 12 19 ];
+        symbol [ format %tmp.30 69 20 26 ];
+        %tmp.30 = getv function %tmp.29 :format;
+        %tmp.31 = "%02d";
+        %tmp.32 = invoke %tmp.29 %tmp.30(%tmp.31);
+        %tmp.33 = dup %tmp.28;
+        %tmp.34 = aputv %tmp.33 2 %tmp.32;
+        %tmp.35 = invoke %tmp.13 %tmp.14(%tmp.15, %tmp.34);
+        symbol [ elapsedTimeString ? 66 8 25 ];
+        putv self :elapsedTimeString %tmp.35;
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 71 8 ]
+        symbol [ WatchUi %tmp.36 71 8 15 ];
+        %tmp.36 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.37 71 16 29 ];
+        %tmp.37 = getv function %tmp.36 :requestUpdate;
+        invoke %tmp.36 %tmp.37();
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_61_58_72_4_stop:
+    }
+    [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 74; @symbol_functiondef = [getFastingSession,74,13,30]; @symbol_return<0> = [FastingSession,74,36,50]; ]
+    function getFastingSession() as FastingSession {
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_74_51_76_4_start:
+[ "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc" 75 8 ]
+        symbol [ fastingSession %tmp.2 75 15 29 ];
+        %tmp.2 = getv ? :fastingSession;
+        ret %tmp.2;
+N_Projects_FastTrack_FastTrack_FastTrack_source_FastTrackView_mc_74_51_76_4_stop:
     }
 }
 [ @file = "N:\Projects\FastTrack\FastTrack\FastTrack\source\FastTrackView.mc"; @line = 1; ]
