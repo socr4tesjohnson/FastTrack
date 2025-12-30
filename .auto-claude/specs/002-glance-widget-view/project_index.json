@@ -1,0 +1,23 @@
+{
+  "project_root": "C:\\Projects\\FastTrack",
+  "project_type": "single",
+  "services": {
+    "fasttrack_app": {
+      "path": "./FastTrack/FastTrack",
+      "tech_stack": ["monkey-c", "garmin-connect-iq"],
+      "api_level": "5.0.0",
+      "device": "approachs50",
+      "dev_command": "monkeyc -d approachs50 -f monkey.jungle -o FastTrack.prg && connectiq",
+      "test_command": "simulator"
+    }
+  },
+  "infrastructure": {
+    "simulator": "Garmin Connect IQ Simulator",
+    "vscode_extension": "garmin.monkey-c"
+  },
+  "conventions": {
+    "storage_api": "Toybox.Application.Storage",
+    "ui_framework": "Toybox.WatchUi",
+    "graphics_api": "Toybox.Graphics"
+  }
+}

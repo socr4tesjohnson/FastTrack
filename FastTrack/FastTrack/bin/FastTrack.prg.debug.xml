@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="N:\Projects\FastTrack\FastTrack\FastTrack\manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="1" lineNum="26" parent="globals" pc="268435460" symbol="getApp"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="1" lineNum="27" parent="globals" pc="268435470" symbol="getApp"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="2" lineNum="5" parent="globals/FastTrackMenuDelegate" pc="268435481" symbol="&lt;init&gt;"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="3" lineNum="7" parent="globals/Rez" pc="268435493" symbol="&lt;init&gt;"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="4" lineNum="5" parent="globals/FastTrackApp" pc="268435513" symbol="&lt;init&gt;"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="5" lineNum="4" parent="globals/FastTrackDelegate" pc="268435525" symbol="&lt;init&gt;"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="6" lineNum="4" parent="globals/FastTrackView" pc="268435537" symbol="&lt;init&gt;"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="7" lineNum="11" parent="globals/FastTrackMenuDelegate" pc="268435549" symbol="onMenuItem"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="7" lineNum="12" parent="globals/FastTrackMenuDelegate" pc="268435551" symbol="onMenuItem"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="7" lineNum="13" parent="globals/FastTrackMenuDelegate" pc="268435562" symbol="onMenuItem"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="7" lineNum="14" parent="globals/FastTrackMenuDelegate" pc="268435583" symbol="onMenuItem"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="7" lineNum="15" parent="globals/FastTrackMenuDelegate" pc="268435594" symbol="onMenuItem"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="8" lineNum="7" parent="globals/FastTrackMenuDelegate" pc="268435616" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackMenuDelegate.mc" id="8" lineNum="8" parent="globals/FastTrackMenuDelegate" pc="268435618" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="9" lineNum="12" parent="globals/FastTrackApp" pc="268435631" symbol="onStart"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="10" lineNum="20" parent="globals/FastTrackApp" pc="268435634" symbol="getInitialView"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="10" lineNum="21" parent="globals/FastTrackApp" pc="268435636" symbol="getInitialView"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="11" lineNum="7" parent="globals/FastTrackApp" pc="268435691" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="11" lineNum="8" parent="globals/FastTrackApp" pc="268435693" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackApp.mc" id="12" lineNum="16" parent="globals/FastTrackApp" pc="268435706" symbol="onStop"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="13" lineNum="10" parent="globals/FastTrackDelegate" pc="268435709" symbol="onMenu"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="13" lineNum="11" parent="globals/FastTrackDelegate" pc="268435711" symbol="onMenu"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="13" lineNum="12" parent="globals/FastTrackDelegate" pc="268435780" symbol="onMenu"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="14" lineNum="6" parent="globals/FastTrackDelegate" pc="268435782" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackDelegate.mc" id="14" lineNum="7" parent="globals/FastTrackDelegate" pc="268435784" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="16" lineNum="11" parent="globals/FastTrackView" pc="268435797" symbol="onLayout"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="16" lineNum="12" parent="globals/FastTrackView" pc="268435799" symbol="onLayout"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="17" lineNum="6" parent="globals/FastTrackView" pc="268435833" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="17" lineNum="7" parent="globals/FastTrackView" pc="268435835" symbol="initialize"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="19" lineNum="22" parent="globals/FastTrackView" pc="268435848" symbol="onUpdate"/>
+        <entry filename="N:\\Projects\\FastTrack\\FastTrack\\FastTrack\\source\\FastTrackView.mc" id="19" lineNum="24" parent="globals/FastTrackView" pc="268435850" symbol="onUpdate"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="20" lineNum="14" parent="globals/Rez/Layouts" pc="268435867" symbol="MainLayout"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="20" lineNum="15" parent="globals/Rez/Layouts" pc="268435878" symbol="MainLayout"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="20" lineNum="17" parent="globals/Rez/Layouts" pc="268435978" symbol="MainLayout"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="20" lineNum="18" parent="globals/Rez/Layouts" pc="268436062" symbol="MainLayout"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="20" lineNum="20" parent="globals/Rez/Layouts" pc="268436094" symbol="MainLayout"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="21" lineNum="25" parent="globals/Rez/Menus/MainMenu" pc="268436109" symbol="&lt;init&gt;"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="22" lineNum="26" parent="globals/Rez/Menus/MainMenu" pc="268436121" symbol="initialize"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="22" lineNum="27" parent="globals/Rez/Menus/MainMenu" pc="268436123" symbol="initialize"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="22" lineNum="28" parent="globals/Rez/Menus/MainMenu" pc="268436135" symbol="initialize"/>
+        <entry filename="n:\\Projects\\FastTrack\\FastTrack\\FastTrack\\bin\\gen\\006-B4656-00\\source\\Rez.mcgen" id="22" lineNum="29" parent="globals/Rez/Menus/MainMenu" pc="268436180" symbol="initialize"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="8389346" symbol="text"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="5" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="15" method="true" symbol="MainLayout"/>
+        <entry id="8" object="true" symbol="FastTrackDelegate"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="17" symbol="AppName"/>
+        <entry id="6" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8389080" method="true" symbol="onMenu"/>
+        <entry id="8389345" symbol="rezId"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry id="10" object="true" symbol="FastTrackView"/>
+        <entry field="true" id="20" symbol="prompt"/>
+        <entry field="true" id="14" symbol="id_monkey"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry id="22" symbol="item_2"/>
+        <entry id="21" symbol="item_1"/>
+        <entry id="12" module="true" symbol="Menus"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry id="4" module="true" symbol="globals/Rez/Layouts"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="16" object="true" symbol="MainMenu"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="7" object="true" symbol="FastTrackApp"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry field="true" id="13" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="8389109" method="true" symbol="onMenuItem"/>
+        <entry field="true" id="8389347" symbol="color"/>
+        <entry id="9" object="true" symbol="FastTrackMenuDelegate"/>
+        <entry id="11" module="true" symbol="Layouts"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="19" symbol="menu_label_2"/>
+        <entry field="true" id="18" symbol="menu_label_1"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435615" name="item" stackId="1" startPc="268435549"/>
+        <entry arg="true" endPc="268435832" name="dc" stackId="1" startPc="268435797"/>
+        <entry arg="true" endPc="268435866" name="dc" stackId="1" startPc="268435848"/>
+        <entry arg="true" endPc="268436108" name="dc" stackId="1" startPc="268435867"/>
+        <entry endPc="268436108" name="rez_cmp_local_text_1193959466" stackId="2" startPc="268435878"/>
+        <entry endPc="268436108" name="rez_cmp_local_bitmap_id_monkey" stackId="3" startPc="268435878"/>
+    </localVars>
+    <deviceInfo deviceVersion="" partNumber="006-B4656-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="prompt"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="id_monkey"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="67" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/FastTrackMenuDelegate" offset="152" parentId="globals" symbolId="FastTrackMenuDelegate" type="class"/>
+        <dataEntry label="globals/Rez" offset="205" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/FastTrackApp" offset="267" parentId="globals" symbolId="FastTrackApp" type="class"/>
+        <dataEntry label="globals/FastTrackDelegate" offset="338" parentId="globals" symbolId="FastTrackDelegate" type="class"/>
+        <dataEntry label="globals/FastTrackView" offset="391" parentId="globals" symbolId="FastTrackView" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="471" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="515" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Menus" offset="550" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="585" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/Rez/Menus/MainMenu" offset="647" parentId="Menus" symbolId="MainMenu" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435480" name="getApp" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435492" name="&lt;init&gt;" parent="FastTrackMenuDelegate" startPc="268435481">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435512" name="&lt;init&gt;" parent="Rez" startPc="268435493">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435524" name="&lt;init&gt;" parent="FastTrackApp" startPc="268435513">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435536" name="&lt;init&gt;" parent="FastTrackDelegate" startPc="268435525">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435548" name="&lt;init&gt;" parent="FastTrackView" startPc="268435537">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435615" name="onMenuItem" parent="FastTrackMenuDelegate" startPc="268435549">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435630" name="initialize" parent="FastTrackMenuDelegate" startPc="268435616">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Layouts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Menus">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435633" name="onStart" parent="FastTrackApp" startPc="268435631">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435690" name="getInitialView" parent="FastTrackApp" startPc="268435634">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435705" name="initialize" parent="FastTrackApp" startPc="268435691">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435708" name="onStop" parent="FastTrackApp" startPc="268435706">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435781" name="onMenu" parent="FastTrackDelegate" startPc="268435709">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435796" name="initialize" parent="FastTrackDelegate" startPc="268435782">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onShow" parent="FastTrackView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435832" name="onLayout" parent="FastTrackView" startPc="268435797">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435847" name="initialize" parent="FastTrackView" startPc="268435833">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onHide" parent="FastTrackView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435866" name="onUpdate" parent="FastTrackView" startPc="268435848">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436108" name="MainLayout" parent="Layouts" startPc="268435867">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436120" name="&lt;init&gt;" parent="MainMenu" startPc="268436109">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436225" name="initialize" parent="MainMenu" startPc="268436121">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>
