@@ -13,6 +13,11 @@ class FastTrackMenuDelegate extends WatchUi.MenuInputDelegate {
             System.println("item 1");
         } else if (item == :item_2) {
             System.println("item 2");
+        } else if (item == :view_history) {
+            // Navigate to history view
+            var view = new FastingHistoryView();
+            var delegate = new FastingHistoryDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
         }
     }
 
