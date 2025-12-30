@@ -413,5 +413,26 @@
   "status": "human_review",
   "planStatus": "review",
   "updated_at": "2025-12-24T20:09:00.016Z",
-  "last_updated": "2025-12-24T20:45:40.359742+00:00"
+  "last_updated": "2025-12-24T20:45:40.359742+00:00",
+  "qa_iteration_history": [
+    {
+      "iteration": 1,
+      "status": "error",
+      "timestamp": "2025-12-24T20:58:44.237809+00:00",
+      "issues": [
+        {
+          "title": "QA error",
+          "description": "QA agent did not update implementation_plan.json"
+        }
+      ]
+    }
+  ],
+  "qa_stats": {
+    "total_iterations": 1,
+    "last_iteration": 1,
+    "last_status": "error",
+    "issues_by_type": {
+      "unknown": 1
+    }
+  }
 }
