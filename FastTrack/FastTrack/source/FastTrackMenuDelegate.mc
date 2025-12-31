@@ -1,0 +1,24 @@
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.WatchUi;
+
+class FastTrackMenuDelegate extends WatchUi.MenuInputDelegate {
+
+    function initialize() {
+        MenuInputDelegate.initialize();
+    }
+
+    function onMenuItem(item as Symbol) as Void {
+        if (item == :item_1) {
+            System.println("item 1");
+        } else if (item == :item_2) {
+            System.println("item 2");
+        } else if (item == :view_history) {
+            // Navigate to history view
+            var view = new FastingHistoryView();
+            var delegate = new FastingHistoryDelegate(view);
+            WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
+        }
+    }
+
+}
