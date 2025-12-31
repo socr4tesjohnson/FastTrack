@@ -1,0 +1,270 @@
+{
+  "integrations_researched": [
+    {
+      "name": "Garmin Connect IQ SDK - GlanceView API",
+      "type": "framework",
+      "verified_package": {
+        "name": "Toybox.WatchUi.GlanceView",
+        "install_command": "N/A - Native Garmin Connect IQ SDK module",
+        "version": "API Level 3.1.0 or higher",
+        "verified": true
+      },
+      "api_patterns": {
+        "imports": [
+          "import Toybox.WatchUi;",
+          "import Toybox.Graphics;",
+          "import Toybox.Application.Storage;",
+          "import Toybox.Time;",
+          "import Toybox.Lang;"
+        ],
+        "initialization": "class MyGlanceView extends WatchUi.GlanceView {\n    function initialize() {\n        GlanceView.initialize();\n    }\n}",
+        "key_functions": [
+          "GlanceView.initialize() - Constructor for GlanceView class",
+          "onUpdate(dc as Graphics.Dc) as Boolean - Update glance content, must return true",
+          "AppBase.getGlanceView() - Return glance view from app",
+          "Graphics.Dc.drawText(x, y, font, text, justification) - Draw text in glance",
+          "Graphics.Dc.setColor(foreground, background) - Set colors",
+          "Graphics.Dc.clear() - Clear display",
+          "Storage.getValue(key) - Retrieve persisted data",
+          "Time.now() - Get current time as Moment",
+          "Moment.compare(otherMoment) - Get seconds difference"
+        ],
+        "verified_against": "Context7 MCP: /websites/developer_garmin_connect-iq"
+      },
+      "configuration": {
+        "env_vars": [],
+        "config_files": [
+          "manifest.xml - Application manifest (already exists)"
+        ],
+        "dependencies": [
+          "Toybox.WatchUi",
+          "Toybox.Graphics",
+          "Toybox.Application.Storage",
+          "Toybox.Time",
+          "Toybox.Lang"
+        ]
+      },
+      "infrastructure": {
+        "requires_docker": false,
+        "docker_image": null,
+        "ports": [],
+        "volumes": []
+      },
+      "gotchas": [
+        "Glances have LIMITED MEMORY - use :glance annotation to mark classes/modules needed for glance mode",
+        "Cannot use XML layouts in glances - must use direct drawing with Graphics.Dc.drawText() and primitives",
+        "onUpdate() is called automatically by system - no manual timer or requestUpdate() needed",
+        "onUpdate() MUST return true to indicate successful update",
+        "Glance only available on devices supporting API Level 3.1.0+ (most modern Garmin watches)",
+        "Tap on glance automatically opens full app - no custom tap handling needed",
+        "Data must be accessed via Application.Storage - cannot directly access FastingSession instance",
+        "Glances are meant to be lightweight and fast - avoid heavy computations",
+        "System manages glance refresh frequency automatically",
+        "Use FONT_GLANCE or system fonts for optimal readability"
+      ],
+      "research_sources": [
+        "https://developer.garmin.com/connect-iq/core-topics/glances",
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/WatchUi/GlanceView",
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/Application/AppBase",
+        "Context7 MCP: /websites/developer_garmin_connect-iq"
+      ]
+    },
+    {
+      "name": "Toybox.Application.Storage",
+      "type": "library",
+      "verified_package": {
+        "name": "Toybox.Application.Storage",
+        "install_command": "N/A - Native Garmin Connect IQ SDK module",
+        "version": "API Level 2.4.0 or higher",
+        "verified": true
+      },
+      "api_patterns": {
+        "imports": [
+          "import Toybox.Application.Storage;"
+        ],
+        "initialization": "N/A - Static module",
+        "key_functions": [
+          "Storage.getValue(key) - Retrieve stored value by key",
+          "Storage.setValue(key, value) - Store value by key",
+          "Storage.deleteValue(key) - Delete stored value"
+        ],
+        "verified_against": "Context7 MCP + Existing codebase (FastingSession.mc uses Storage)"
+      },
+      "configuration": {
+        "env_vars": [],
+        "config_files": [],
+        "dependencies": []
+      },
+      "infrastructure": {
+        "requires_docker": false,
+        "docker_image": null,
+        "ports": [],
+        "volumes": []
+      },
+      "gotchas": [
+        "Background processes cannot save properties directly on older devices (pre-Connect IQ 3.2.0)",
+        "Storage is shared between main app and glance - perfect for accessing fasting state",
+        "Values persist across app launches",
+        "Can throw InvalidKeyException if key doesn't exist in app settings"
+      ],
+      "research_sources": [
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/Application/Properties",
+        "https://developer.garmin.com/connect-iq/core-topics/properties-and-app-settings",
+        "Existing codebase: FastTrack/FastTrack/source/FastingSession.mc"
+      ]
+    },
+    {
+      "name": "Toybox.Graphics.Dc (Device Context)",
+      "type": "library",
+      "verified_package": {
+        "name": "Toybox.Graphics.Dc",
+        "install_command": "N/A - Native Garmin Connect IQ SDK module",
+        "version": "API Level 1.0.0 or higher",
+        "verified": true
+      },
+      "api_patterns": {
+        "imports": [
+          "import Toybox.Graphics;"
+        ],
+        "initialization": "// Passed to onUpdate(dc) automatically",
+        "key_functions": [
+          "dc.setColor(foreground, background) - Set drawing colors",
+          "dc.clear() - Clear display",
+          "dc.drawText(x, y, font, text, justification) - Draw text",
+          "dc.getWidth() - Get display width",
+          "dc.getHeight() - Get display height",
+          "Graphics.FONT_SYSTEM_TINY, FONT_SYSTEM_SMALL, FONT_MEDIUM, etc. - System fonts",
+          "Graphics.TEXT_JUSTIFY_CENTER, TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_RIGHT - Text alignment",
+          "Graphics.COLOR_WHITE, COLOR_BLACK, COLOR_TRANSPARENT - Colors"
+        ],
+        "verified_against": "Context7 MCP + Existing codebase (FastTrackView.mc uses Graphics)"
+      },
+      "configuration": {
+        "env_vars": [],
+        "config_files": [],
+        "dependencies": []
+      },
+      "infrastructure": {
+        "requires_docker": false,
+        "docker_image": null,
+        "ports": [],
+        "volumes": []
+      },
+      "gotchas": [
+        "Must set color before drawing operations",
+        "Text position is relative to justification (center, left, right)",
+        "Device context (dc) is automatically provided to onUpdate()",
+        "Use Graphics.getFontHeight(font) to calculate text positioning",
+        "Coordinates (0,0) start at top-left corner"
+      ],
+      "research_sources": [
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/Graphics/Dc",
+        "https://developer.garmin.com/connect-iq/core-topics/graphics",
+        "Existing codebase: FastTrack/FastTrack/source/FastTrackView.mc"
+      ]
+    },
+    {
+      "name": "Toybox.Time (Time and Duration)",
+      "type": "library",
+      "verified_package": {
+        "name": "Toybox.Time",
+        "install_command": "N/A - Native Garmin Connect IQ SDK module",
+        "version": "API Level 1.0.0 or higher",
+        "verified": true
+      },
+      "api_patterns": {
+        "imports": [
+          "import Toybox.Time;",
+          "import Toybox.Time.Gregorian;"
+        ],
+        "initialization": "N/A - Static module",
+        "key_functions": [
+          "Time.now() - Get current time as Moment",
+          "new Time.Moment(seconds) - Create Moment from timestamp",
+          "moment.value() - Get timestamp in seconds",
+          "moment.compare(otherMoment) - Get seconds difference",
+          "moment.add(duration) - Add duration to moment",
+          "moment.subtract(duration) - Subtract duration from moment",
+          "new Time.Duration(seconds) - Create duration",
+          "Gregorian.duration({:days=>1, :hours=>2}) - Create duration from components"
+        ],
+        "verified_against": "Context7 MCP + Existing codebase (FastingSession.mc uses Time)"
+      },
+      "configuration": {
+        "env_vars": [],
+        "config_files": [],
+        "dependencies": []
+      },
+      "infrastructure": {
+        "requires_docker": false,
+        "docker_image": null,
+        "ports": [],
+        "volumes": []
+      },
+      "gotchas": [
+        "Moment.compare() returns seconds as Number (can be large)",
+        "Time.Moment stores UTC time, not local time",
+        "Duration arithmetic works with seconds",
+        "Use Gregorian.info() for human-readable date/time components"
+      ],
+      "research_sources": [
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/Time/Moment",
+        "https://developer.garmin.com/connect-iq/api-docs/Toybox/Time/Duration",
+        "Existing codebase: FastTrack/FastTrack/source/FastingSession.mc"
+      ]
+    }
+  ],
+  "unverified_claims": [],
+  "recommendations": [
+    "Use the :glance annotation on the GlanceView class to optimize memory usage",
+    "Access fasting state via Storage.getValue('fastStartTime') and Storage.getValue('isActiveFast') - already implemented in FastingSession.mc",
+    "Calculate elapsed time in glance by comparing Time.now() with stored startTime",
+    "Use Graphics.FONT_SYSTEM_SMALL or Graphics.FONT_MEDIUM for glance text",
+    "Keep glance drawing minimal - 3 text elements max (status, time, progress %)",
+    "Format time as HH:MM to save space (or HH:MM:SS if room permits)",
+    "Show 'Not Fasting' when Storage.getValue('isActiveFast') is null or false",
+    "No need for manual update timer - system handles refresh automatically",
+    "Consider using Graphics.FONT_NUMBER_* for elapsed time display",
+    "Test on target device (approachs50 from manifest.xml) to verify display"
+  ],
+  "context7_libraries_used": [
+    "/websites/developer_garmin_connect-iq"
+  ],
+  "existing_codebase_patterns": {
+    "fasting_state_storage": {
+      "keys_used": [
+        "fastStartTime - Number (timestamp in seconds)",
+        "isActiveFast - Boolean (true when fast is active)"
+      ],
+      "storage_location": "FastingSession.mc lines 26-27, 39-40",
+      "access_pattern": "Storage.getValue() and Storage.setValue()"
+    },
+    "time_calculation": {
+      "pattern": "currentTime.compare(startTime) returns elapsed seconds",
+      "location": "FastingSession.mc line 59",
+      "format_pattern": "hours.format('%02d'):minutes.format('%02d'):seconds.format('%02d')"
+    },
+    "app_structure": {
+      "app_class": "FastTrackApp extends Application.AppBase",
+      "location": "FastTrack/FastTrack/source/FastTrackApp.mc",
+      "min_api_level": "5.0.0",
+      "target_device": "approachs50"
+    }
+  },
+  "implementation_checklist": [
+    "Create new file: FastTrackGlanceView.mc",
+    "Add :glance annotation to class",
+    "Extend WatchUi.GlanceView",
+    "Implement onUpdate(dc) method with Graphics.Dc drawing",
+    "Read Storage.getValue('isActiveFast') and Storage.getValue('fastStartTime')",
+    "Calculate elapsed time if active",
+    "Format time string (HH:MM or HH:MM:SS)",
+    "Calculate progress percentage (if target duration exists)",
+    "Draw status text, elapsed time, and progress using dc.drawText()",
+    "Return true from onUpdate()",
+    "Add getGlanceView() method to FastTrackApp.mc",
+    "Return new FastTrackGlanceView() from getGlanceView()",
+    "Test on simulator and device"
+  ],
+  "created_at": "2025-12-24T19:54:54Z"
+}

@@ -20,6 +20,12 @@ class FastTrackApp extends Application.AppBase {
         return [ view, new FastTrackDelegate(view) ];
     }
 
+    // Return the glance view for the widget carousel
+    (:glance)
+    function getGlanceView() as [GlanceView] or Null {
+        return [ new GlanceView() ];
+    }
+
 }
 
 function getApp() as FastTrackApp {

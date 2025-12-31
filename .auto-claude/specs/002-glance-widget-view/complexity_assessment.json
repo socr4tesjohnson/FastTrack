@@ -1,0 +1,72 @@
+{
+  "complexity": "standard",
+  "workflow_type": "feature",
+  "confidence": 0.85,
+  "reasoning": "New Garmin glance widget feature requiring specialized Connect IQ API knowledge. Involves 3-6 files with background update mechanisms and device compatibility considerations. Single external integration (Garmin API) needs research but scope is contained to one service.",
+
+  "analysis": {
+    "scope": {
+      "estimated_files": 5,
+      "estimated_services": 1,
+      "is_cross_cutting": false,
+      "notes": "Glance view implementation, manifest configuration, state management integration, styling definitions, possible utility classes for time formatting"
+    },
+    "integrations": {
+      "external_services": ["Garmin Connect IQ Glance API"],
+      "new_dependencies": [],
+      "research_needed": true,
+      "notes": "Garmin Connect IQ glance lifecycle, background update patterns, device capability checks, and data access patterns in glance context require research"
+    },
+    "infrastructure": {
+      "docker_changes": false,
+      "database_changes": false,
+      "config_changes": true,
+      "notes": "Manifest.xml or similar Garmin configuration file needs updates to register glance capability"
+    },
+    "knowledge": {
+      "patterns_exist": true,
+      "research_required": true,
+      "unfamiliar_tech": ["Garmin Connect IQ Glance API"],
+      "notes": "App likely has existing view patterns, but glance-specific lifecycle, update frequency constraints, and background execution model need research"
+    },
+    "risk": {
+      "level": "medium",
+      "concerns": [
+        "Battery efficiency with minute-level background updates",
+        "Data synchronization accuracy between glance and main app",
+        "Device compatibility across Garmin watch models",
+        "Background update reliability and timing constraints",
+        "Glance lifecycle management and state preservation"
+      ],
+      "notes": "Glances have specific Garmin platform constraints around update frequency and background execution that must be carefully handled"
+    }
+  },
+
+  "recommended_phases": [
+    "discovery",
+    "requirements",
+    "research",
+    "context",
+    "spec_writing",
+    "planning",
+    "validation"
+  ],
+
+  "flags": {
+    "needs_research": true,
+    "needs_self_critique": false,
+    "needs_infrastructure_setup": false
+  },
+
+  "validation_recommendations": {
+    "risk_level": "medium",
+    "skip_validation": false,
+    "minimal_mode": false,
+    "test_types_required": ["unit", "integration"],
+    "security_scan_required": false,
+    "staging_deployment_required": false,
+    "reasoning": "Glance widget requires unit tests for status/time formatting logic and integration tests for background update lifecycle and data synchronization. No security-sensitive changes or auth modifications involved."
+  },
+
+  "created_at": "2025-12-24T00:00:00Z"
+}
